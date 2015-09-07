@@ -1,0 +1,49 @@
+<br>
+<br>
+<br>
+<br>
+<div class="row">
+  <form>
+    <!-- title field -->
+    <div class="form-group col-lg-8 col-md-8">
+      <label for="title">Title:</label>
+      <input type="text" class="form-control" id="title" ng-model="project.project_title" placeholder="title for the project">
+    </div>
+  </form>
+</div>
+<div class="row">
+  <form>
+    <!-- overview field -->
+    <div class="form-group col-lg-8 col-md-8">
+      <label for="overview">Overview:</label>
+      <textarea class="form-control"  rows="4" id="overview" ng-model="project.project_overview" placeholder="poverview for the project"></textarea>
+    </div>
+  </form>
+</div>
+<div class="row">
+  <form>
+    <!-- content field -->
+    <div class="form-group col-lg-8 col-md-8">
+      <label for="content">Content:</label>
+      <textarea class="form-control"  rows="7" id="content" ng-model="project.project_content" placeholder="content for the project"></textarea>
+    </div>
+  </form>
+</div>
+<div class="row">
+  <form>
+    <!-- private field -->
+    <div class="form-group col-lg-8 col-md-8">
+      <label for="private">Private:</label>
+      <textarea class="form-control"  rows="3" id="private" ng-model="project.project_private" placeholder="private section"></textarea>
+    </div>
+  </form>
+</div>
+<div class="row">
+  <form>
+    <!-- content field -->
+    <div class="form-group col-lg-8 col-md-8">
+      <button ng-click="addnewproject(project)" ui-sref="projects" >Save</button>
+      <button ui-sref="projects">Cancel</button>
+    </div>
+  </form>
+</div>

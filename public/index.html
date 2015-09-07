@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Codes, Libraries & Electronics</title>
+
+    <!-- Compiled and minified CSS  bootstrap-->
+    <link rel="stylesheet" href="styles/vendor/css/bootstrap.min.css">
+  </head>
+  <body  ng-app="myApp">
+
+    <div ng-controller="AppCtrl">
+
+      <!-- Nav Bar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand">Codes, Libraries & Electronics</a>
+          </div>
+          <div>
+            <ul class="nav navbar-nav">
+              <li><a ui-sref="index">Search</a></li>
+              <li><a ui-sref="projects">Projects</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Body -->
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <ui-view></ui-view>
+          </div>
+        </div>
+      </div> <!-- end Body -->
+
+    </div>
+
+
+
+    <!-- JQuery -->
+    <script src="js/vendor/jquery-1.11.3.min.js"></script>
+    <!-- Angular JS -->
+    <script src="js/vendor/angular-1.4.3.min.js"></script>
+    <!-- UI Routes -->
+    <script src="js/vendor/angular-ui-router-0.2.8.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <!-- controller -->
+    <script src="controllers/controller.js"></script>
+
+  </body>
+</html>

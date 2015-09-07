@@ -1,0 +1,46 @@
+<br>
+<br>
+<br>
+<br>
+<div class="row">
+  <form>
+    <!-- input field -->
+    <div class="form-group col-lg-8 col-md-8">
+      <label for="search">Search:</label>
+      <input type="text" class="form-control" id="search" ng-model="search.text_search">
+      <input type="submit" value="Search"  ng-click="search()" >
+    </div>
+  </form>
+</div>
+<div class="row">
+  <form>
+    <br>
+    <!-- checkbox field -->
+    <p>
+      <input type="checkbox" class="filled-in" ng-model="search.code" id="filled-in-box">
+      <label for="filled-in-box">Codes</label>
+    </p>
+    <p>
+      <input type="checkbox" class="filled-in" ng-model="search.library" id="filled-in-box">
+      <label for="filled-in-box">Libraries</label>
+    </p>
+    <p>
+      <input type="checkbox" class="filled-in" ng-model="search.electronic" id="filled-in-box">
+      <label for="filled-in-box">Electronics</label>
+    </p>
+  </form>
+</div>
+<hr>
+
+<!-- search results -->
+<div ng-repeat="find in findResults">
+  <div class="row">
+    <div class="col-lg-8 col-md-8">
+
+             <article class="card__article">
+                   <h2>{{find}}</h2>
+              </article>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+/// show databases
+>show dbs
+
+/// use one database
+>use projectlist
+
+/// show all the database of projectlist
+>db.projectlist.find()
+
+/// show pretty
+>db.projectlist.find().pretty()
+
+/// insert a row
+>db.projectlist.insert({user_owner: 'yabin.perez', project_title: 'project2', project_overview: 'honey badger', ...})
+
+0016267204167
+//database
+
+db.projectlist.insert({user_owner: 'yabin.perez' , project_title: 'project1', project_overview: 'honey badger its something', project_content: 'contenido', project_private: 'urls', project_show: 'no', project_cost: '0.00', date_created: '1-tuesday-2015', last_update: '1-tuesday-2015', project_extras: '----'  })
+
+db.projectlist.find().pretty()
+{
+"_id" : ObjectId("55e61e9abe8df755630deead"),
+"user_owner" : "yabin.perez",
+"project_title" : "project1",
+"project_overview" : "honey badger its something",
+"project_content" : "contenido",
+"project_private" : "urls",
+"project_show" : "no",
+"project_cost" : "0.00",
+"date_created" : "1-tuesday-2015",
+"last_update" : "1-tuesday-2015",
+"project_extras" : "----"
+}
+
+ -user_owner:
+ -project_title:
+ -project_overview:
+ -project_content:
+ -project_private:
+ -project_show:
+ -project_cost:
+ -date_created:
+ -last_update:
+ -project_extras:
