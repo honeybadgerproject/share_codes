@@ -22,12 +22,13 @@
           </div>
           <div>
             <ul class="nav navbar-nav">
-              <li><a ui-sref="index">Search</a></li>
+              <li><a ui-sref="search">Search</a></li>
               <li><a ui-sref="projects">Projects</a></li>
             </ul>
           </div>
         </div>
       </nav>
+
 
       <!-- Body -->
       <div class="container">
@@ -38,18 +39,35 @@
         </div>
       </div> <!-- end Body -->
 
+
+      <!--
+        Below we include the Login Button social plugin. This button uses
+        the JavaScript SDK to present a graphical Login button that triggers
+        the FB.login() function when clicked.
+      -->
+      <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+      </fb:login-button>
+
+      <div id="status">
+      </div>
+
     </div>
 
 
-
+    <!-- facebook -->
+    <!--<script src="js/vendor/connect-facebook-sdk.js"></script>-->
     <!-- JQuery -->
     <script src="js/vendor/jquery-1.11.3.min.js"></script>
     <!-- Angular JS -->
-    <script src="js/vendor/angular-1.4.3.min.js"></script>
+    <!--<script src="js/vendor/angular-1.4.3.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js"></script>
     <!-- UI Routes -->
     <script src="js/vendor/angular-ui-router-0.2.8.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="js/vendor/bootstrap.min.js"></script>
+    <!--facebook-->
+    <!--<script src="js/vendor/connect-facebook-sdk.js"></script>-->
+    <script src="http://rawgithub.com/Ciul/angular-facebook/master/lib/angular-facebook.js"></script>
     <!-- controller -->
     <script src="controllers/controller.js"></script>
 
