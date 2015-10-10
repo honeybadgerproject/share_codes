@@ -45,8 +45,8 @@
         the JavaScript SDK to present a graphical Login button that triggers
         the FB.login() function when clicked.
       -->
-      <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-      </fb:login-button>
+      <!--<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+      </fb:login-button>-->
 
       <div id="status">
       </div>
@@ -68,8 +68,22 @@
     <!--facebook-->
     <!--<script src="js/vendor/connect-facebook-sdk.js"></script>-->
     <script src="http://rawgithub.com/Ciul/angular-facebook/master/lib/angular-facebook.js"></script>
-    <!-- controller -->
-    <script src="controllers/controller.js"></script>
+    <!-- ui router modal -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>
+    <script src="https://rawgit.com/christopherthielen/ui-router-extras/0.0.10/release/ct-ui-router-extras.js"></script>
+    <!--braintree -->
+    <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+    <!-- braintree-angular -->
+    <script src="js/braintree-angular.js"></script>
+    <!-- index braintree -->
+    <!--<script src="js/index-braintree.js"></script>-->
+    <!-- app controller -->
+    <script src="controllers/app-controller.js"></script>
+    <!-- login controller -->
+    <script src="controllers/login-controller.js"></script>
+    <!-- braintree controller -->
+    <script src="controllers/braintree-controller.js"></script>
+
 
   </body>
 </html>

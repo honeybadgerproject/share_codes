@@ -6,16 +6,16 @@ ng-click="update()" --> saveproject
 
 ----1. create a easy search algorithm for one word contained in the text
 
-2. fill two documents, one for Honey badger and other for fast jump
+----2. fill two documents, one for Honey badger and other for fast jump
 
-3. create a backup of the project
+----3. create a backup of the project
 
-4. deploy the project aws
+----4. deploy the project aws (digitalocean)
 
 ------------------>>>>> pedirle a Rubio que me ayude con los estilos!
 ------------------>>>>> ver comentarios de cristian de que podria mejorar
 
-5. create the facebook authenticationa layer
+----5. create the facebook authenticationa layer
 
 6. store the credentials in mongodb
 

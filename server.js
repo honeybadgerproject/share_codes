@@ -4,8 +4,67 @@ var mongojs = require('mongojs');
 var db = mongojs('projectlist', ['projectlist']);
 var bodyParser = require('body-parser');
 
+var braintree = require('braintree');
+
+var dummyClientToken = require('./client-token');
+
+var fs = require('fs');
+
+var angularStr = fs.readFileSync(__dirname + "/node_modules/angular/angular.js", "utf8");
+var braintreeAngularStr = fs.readFileSync(__dirname + "/node_modules/braintree-angular/dist/braintree-angular.js", "utf8");
+
+
+var gateway = braintree.connect({
+  environment: braintree.Environment.Sandbox,
+  merchantId: "8z89z5gg7zt6x8x8",
+  publicKey: "w9kvxgpmbsrf594z",
+  privateKey: "cbefff229a42fa94c3138a70584229bf"
+});
+
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
+
+/****   braintree   *****/
+
+app.get('/client-token', function(req, res) {
+  console.log("client-token droping like a bitch");
+  gateway.clientToken.generate({}, function (err, response) {
+    if (err || !response || !response.clientToken) {
+      if (err.name === 'authenticationError') {
+        console.error('Please fill in examples/server.js with your credentials from Account->API Keys in your Sandbox dashboard: https://sandbox.braintreegateway.com/');
+        console.error('Using a dummy client token... this may or may not work');
+        res.send(dummyClientToken);
+      } else {
+        console.error(err);
+        res.send(err);
+      }
+    } else {
+      var clientToken = response.clientToken
+      console.log(clientToken);
+      res.send(clientToken);
+    }
+  });
+});
+
+
+
+app.post('/buy-something', function(req, res) {
+  var nonce = req.body.payment_method_nonce;
+  console.log("buy-something droping like a bitch");
+  console.log(nonce);
+  gateway.transaction.sale({
+    amount: "1.00",
+    paymentMethodNonce: "fake-valid-nonce"
+  }, function (err, result) {
+    if (err) {
+      res.send('error:', err);
+    } else {
+      res.send('successfully charged $10, check your sandbox dashboard!');
+    }
+  });
+});
+
+/**** end braintree *****/
 
 app.get('/projectlist', function(req, res) {
   console.log("request");
