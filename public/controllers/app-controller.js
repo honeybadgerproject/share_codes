@@ -15,9 +15,17 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
 
   //$urlRouterProvider.otherwise('/index');
 
-  /* logi */
-  $stateProvider.state("index", {
+  /* home */
+  $stateProvider.state("home", {
     url: '',
+    templateUrl: 'views/home.html' ,
+    data: {
+      requireLogin: false
+    }
+  });
+  /* login */
+  $stateProvider.state("login", {
+    url: 'login',
     templateUrl: 'views/login.html' ,
     data: {
       requireLogin: false
@@ -36,7 +44,7 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
     url: '/projects',
     templateUrl: 'views/projects.html' ,
     data: {
-      requireLogin: false
+      requireLogin: true
     }
   });
   /* add new project */
@@ -55,6 +63,22 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
       requireLogin: false
     }
   });
+  /* jump to hacking zone */
+  $stateProvider.state("hackingzone", {
+    url: '/hackingzone',
+    templateUrl: 'views/hackingzone.html' ,
+    data: {
+      requireLogin: false
+    }
+  });
+  /* jump to preview the project */
+  $stateProvider.state("preview", {
+    url: '/preview',
+    templateUrl: 'views/preview.html' ,
+    data: {
+      requireLogin: false
+    }
+  });
   /* pay the code */
   $stateProvider.state("pay", {
     url: '/pay',
@@ -64,6 +88,8 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
     }
   });
 
+  // Send to home if the URL was not found
+  $urlRouterProvider.otherwise("/home");
 
 });
 
@@ -74,6 +100,26 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook) {
 
     console.log("heloo wombath codes");
 
+    $scope.changeStyle1 = function() {
+      //$scope.
+      console.log("change to class 1");
+
+       $scope.wstyle = "style1";
+    };
+
+    $scope.changeStyle2 = function() {
+      console.log("change to class 2");
+
+       $scope.wstyle = "style2";
+    };
+
+    $scope.changeStyle3 = function() {
+      console.log("change to class 3");
+
+       $scope.wstyle = "style3";
+    };
+
+
     var refresh = function() {
       $http.get('/projectlist').success(function(response) {
         console.log("refresh");
@@ -83,6 +129,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook) {
     };
 
     refresh();
+
 
     $scope.addnewproject = function(newproject) {
       console.log(newproject);

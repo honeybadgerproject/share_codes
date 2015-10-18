@@ -18,16 +18,19 @@ myLogin.run(function ($rootScope, $state, loginModal) {
       event.preventDefault();
 
       /* provide modal */
+       //$state.go('index'); // go to login
+
+       // User isn’t authenticated
+        $state.transitionTo("login");
+        //event.preventDefault(); 
 
 
-    //  loginModal.open();
-
-      loginModal.then(function () {
+    /*  loginModal.then(function () {
           return $state.go(toState.name, toParams);
         })
         .catch(function () {
           return $state.go('welcome');
-        });
+        });*/
 
     }
   });

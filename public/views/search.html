@@ -38,7 +38,20 @@
     <div class="col-lg-8 col-md-8">
 
              <article class="card__article">
-                   <h2>{{find}}</h2>
+                   <h3>{{title}}<h3>
+                   <h4>{{find}}</h4>
+                   <h4>rate: {{rate}}</h4>
+                   <div class="dropdown">
+                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Collaborators
+                       <span class="caret"></span>
+                     </button>
+                     <ul class="dropdown-menu">
+                       <li><a href="#">Collaborator 1</a></li>
+                       <li><a href="#">Collaborator 2</a></li>
+                     </ul>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <input type="button" value="buy $" ui-sref="pay">
+                   </div>
               </article>
 
     </div>

@@ -40,6 +40,15 @@
 </div>
 <div class="row">
   <form>
+    <!-- title field -->
+    <div class="form-group col-lg-8 col-md-8">
+      <label for="price">Price:</label>
+      <input type="text" class="form-control" id="cost" ng-model="project.price" placeholder="$">
+    </div>
+  </form>
+</div>
+<div class="row">
+  <form>
     <!-- content field -->
     <div class="form-group col-lg-8 col-md-8">
       <button ng-click="update()" ui-sref="projects">Save</button>

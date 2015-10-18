@@ -15,17 +15,23 @@
     <!-- project -->
     <div class="form-group col-lg-8 col-md-8  panel panel-default">
       <p>
-        Created on:<time>17th March</time>
+        Last update:<time>17th March</time>  -  Created on:<time>17th March</time>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button ui-sref="hackingzone">Hacking zone project</button>
       </p>
       <article>
         <h2>{{project.project_title}}</h2>
         <p>{{project.project_overview}}</p>
       </article>
       <p>
-        <input type="button" value="edit" ng-click="edit(project._id)" ui-sref="saveproject">
-        <input type="button" value="delete"  ng-click="remove(project._id)">
+        <label for="s3">show: </label>
         <input type="checkbox" id="s3">
-        <label for="s3">show</label>
+        <label>&nbsp;&nbsp;&nbsp;&nbsp;rate: &nbsp;</label>5
+        <br>
+        <input type="button" value="edit" ng-click="edit(project._id)" ui-sref="saveproject">
+        <input type="button" value="preview" ng-click="edit(project._id)" ui-sref="preview">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" value="delete"  ng-click="remove(project._id)">
       </p>
     </div>
   </div>

@@ -1,0 +1,136 @@
+<br>
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="form-group col-lg-8 col-md-8">
+      <!-- add a new link -->
+      <div class="control-group" id="fields">
+            <label class="control-label" for="field1">Collaborators: </label>
+            <div class="controls">
+                <form role="form" autocomplete="off">
+                    <div class="entry input-group col-xs-3">
+                        <input class="form-control" name="fields[]" type="text" placeholder="Type something" />
+                    	<span class="input-group-btn">
+                            <button class="btn btn-success btn-add" type="button">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            <br>
+            <small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another form collaborator</small>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="row">
+    <div class="form-group col-lg-8 col-md-8">
+      <!-- add a new link -->
+      <div class="control-group" id="fields2">
+            <label class="control-label" for="field2">Resources (bitbucket, github, asana, etc...): </label>
+            <div class="controls">
+                <form role="form2" autocomplete="off">
+                    <div class="entry2 input-group col-xs-3">
+                        <input class="form-control" name="fields2[]" type="text" placeholder="Type something" />
+                    	<span class="input-group-btn">
+                            <button class="btn btn-success btn-add2" type="button">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            <br>
+            <small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another form resource</small>
+            </div>
+      </div>
+    </div>
+</div>
+<br>
+<br
+<div class="row">
+    <div class="form-group col-lg-8 col-md-8">
+
+      <ul id="myTab" class="nav nav-tabs">
+        <li class="active"><a href="#home" data-target="#home, #home_else" data-toggle="tab">Content</a></li>
+        <li><a href="#profile" data-target="#profile, #profile_else" data-toggle="tab">+</a></li>
+      </ul>
+
+      <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade in active" id="home">
+          <p>Content 1.</p>
+        </div>
+        <div class="tab-pane fade" id="profile">
+          <p>Content 2.</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade in active" id="home_else">
+          <p>Content 111.</p>
+        </div>
+        <div class="tab-pane fade" id="profile_else">
+          <p>Content 2222.</p>
+        </div>
+      </div>
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+$(function()
+{
+    $(document).on('click', '.btn-add', function(e)
+    {
+        e.preventDefault();
+
+        var controlForm = $('.controls form:first'),
+            currentEntry = $(this).parents('.entry:first'),
+            newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+        newEntry.find('input').val('');
+        controlForm.find('.entry:not(:last) .btn-add')
+            .removeClass('btn-add').addClass('btn-remove')
+            .removeClass('btn-success').addClass('btn-danger')
+            .html('<span class="glyphicon glyphicon-minus"></span>');
+    }).on('click', '.btn-remove', function(e)
+    {
+		$(this).parents('.entry:first').remove();
+
+		e.preventDefault();
+		return false;
+	});
+});
+
+$(function()
+{
+    $(document).on('click', '.btn-add2', function(e)
+    {
+        e.preventDefault();
+
+        var controlForm = $('.controls form2:first'),
+            currentEntry = $(this).parents('.entry2:first'),
+            newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+        newEntry.find('input').val('');
+        controlForm.find('.entry2:not(:last) .btn-add2')
+            .removeClass('btn-add2').addClass('btn-remove2')
+            .removeClass('btn-success').addClass('btn-danger')
+            .html('<span class="glyphicon glyphicon-minus"></span>');
+    }).on('click', '.btn-remove2', function(e)
+    {
+		$(this).parents('.entry2:first').remove();
+
+		e.preventDefault();
+		return false;
+	});
+});
+
+
+</script>
