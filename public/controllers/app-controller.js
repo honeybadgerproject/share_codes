@@ -15,17 +15,9 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
 
   //$urlRouterProvider.otherwise('/index');
 
-  /* home */
-  $stateProvider.state("home", {
-    url: '',
-    templateUrl: 'views/home.html' ,
-    data: {
-      requireLogin: false
-    }
-  });
   /* login */
-  $stateProvider.state("login", {
-    url: 'login',
+  $stateProvider.state("index", {
+    url: '',
     templateUrl: 'views/login.html' ,
     data: {
       requireLogin: false
@@ -88,8 +80,6 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
     }
   });
 
-  // Send to home if the URL was not found
-  $urlRouterProvider.otherwise("/home");
 
 });
 
