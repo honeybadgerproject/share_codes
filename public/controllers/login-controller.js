@@ -25,7 +25,7 @@ myLogin.run(function ($rootScope, $state, $location, UserFacebookID ) {
     if(requireLogin) {
 
       console.log("step 2... save current state ");
-      UserFacebookID.scopeState = scopeState.name;
+      UserFacebookID.scopeState = toState.name;
 
       console.log("step 3... jump to login");
       $state.go("index");
