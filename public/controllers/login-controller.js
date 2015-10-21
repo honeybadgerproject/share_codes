@@ -3,7 +3,7 @@ var myLogin = angular.module('myApp');
 myLogin.factory('UserFacebookID', function() {
     return {
         user: {} ,
-        scopeState,
+        scopeState: 'index' ,
         logged: 'false'
     };
 });
@@ -29,7 +29,7 @@ myLogin.run(function ($rootScope, $state, $location, UserFacebookID ) {
       UserFacebookID.scopeState = $state.current;
 
       console.log("step 3... jump to login");
-      $state.go("login");
+      $state.go("index");
       event.preventDefault();
 
       return;
@@ -132,7 +132,7 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
           UserFacebookID.logged = true;
           $scope.me();
           console.log("step 6... jumping to the previus state");
-          if(UserFacebookID.scopeState != "login") {
+          if(UserFacebookID.scopeState != "index") {
             $state.go(UserFacebookID.scopeState);
           }
         }
