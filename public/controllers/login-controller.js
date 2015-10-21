@@ -15,9 +15,7 @@ myLogin.run(function ($rootScope, $state, $location, UserFacebookID ) {
   $rootScope.$on('$stateChangeStart', function (event, toState, fromState, toParams) {
     //var requireLogin = toState.data.requireLogin;
 
-    var requireLogin = toState.data !== 'undefined'
-                        && toState.data.requireLogin
-                        && !UserFacebookID.logged ;
+    var requireLogin = toState.data.requireLogin && !UserFacebookID.logged ;
 
 
     console.log("step 1... about to authenticate - toState: " + toState.name + " - fromState: " + fromState.name);
@@ -26,7 +24,7 @@ myLogin.run(function ($rootScope, $state, $location, UserFacebookID ) {
     if(requireLogin) {
 
       console.log("step 2... save current state ");
-      UserFacebookID.scopeState = $state.current;
+      UserFacebookID.scopeState = scopeState.name;
 
       console.log("step 3... jump to login");
       $state.go("index");
