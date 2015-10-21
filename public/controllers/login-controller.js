@@ -3,38 +3,39 @@ var myLogin = angular.module('myApp');
 myLogin.factory('UserFacebookID', function() {
     return {
         user: {} ,
+        scopeState,
         logged: 'false'
     };
 });
 
 
 
-myLogin.run(function ($rootScope, $state, loginModal) {
+myLogin.run(function ($rootScope, $state, $location, UserFacebookID ) {
 
-  $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
-    var requireLogin = toState.data.requireLogin;
+  $rootScope.$on('$stateChangeStart', function (event, toState, fromState, toParams) {
+    //var requireLogin = toState.data.requireLogin;
 
-    if (requireLogin && typeof $rootScope.currentUser === 'undefined') {
+    var requireLogin = toState.data !== 'undefined'
+                        && toState.data.requireLogin
+                        && !UserFacebookID.logged ;
+
+
+    console.log("step 1... about to authenticate - toState: " + toState.name + " - fromState: " + fromState.name);
+
+    // NOT authenticated
+    if(requireLogin) {
+
+      console.log("step 2... save current state ");
+      UserFacebookID.scopeState = $state.current;
+
+      console.log("step 3... jump to login");
+      $state.go("login");
       event.preventDefault();
 
-      /* provide modal */
-       //$state.go('index'); // go to login
-
-       // User isn’t authenticated
-        $state.transitionTo("login");
-        //event.preventDefault(); 
-
-
-    /*  loginModal.then(function () {
-          return $state.go(toState.name, toParams);
-        })
-        .catch(function () {
-          return $state.go('welcome');
-        });*/
+      return;
 
     }
   });
-
 });
 
 myLogin.service('loginModal', function ($modal, $rootScope) {
@@ -71,8 +72,7 @@ myLogin.service('loginModal', function ($modal, $rootScope) {
 
 });
 
-myLogin.controller('loginCtrl', function($scope, $http, $timeout, Facebook, UserFacebookID) {
-
+myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebook, UserFacebookID) {
 
 
     /******************** facebook login **************************/
@@ -124,12 +124,17 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, Facebook, User
     /// Login
     ///
     $scope.login = function() {
+
+      console.log("step 4... starting the facebook login");
       Facebook.login(function(response) {
         if (response.status == 'connected') {
           $scope.logged = true;
           UserFacebookID.logged = true;
           $scope.me();
-
+          console.log("step 6... jumping to the previus state");
+          if(UserFacebookID.scopeState != "login") {
+            $state.go(UserFacebookID.scopeState);
+          }
         }
 
       });
@@ -143,6 +148,8 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, Facebook, User
         ///
         /// Using $scope.$apply since this happens outside angular framework.
         ///
+
+        console.log("step 5... adding the user info");
         $scope.$apply(function() {
           $scope.user = response;
           UserFacebookID.user = response;
