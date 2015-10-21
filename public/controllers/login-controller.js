@@ -15,10 +15,11 @@ myLogin.run(function ($rootScope, $state, $location, UserFacebookID ) {
   $rootScope.$on('$stateChangeStart', function (event, toState, fromState, toParams) {
     //var requireLogin = toState.data.requireLogin;
 
-    var requireLogin = toState.data.requireLogin && !UserFacebookID.logged ;
+    var requireLogin = toState.data.requireLogin && UserFacebookID.logged == 'false';
 
 
-    console.log("step 1... about to authenticate - toState: " + toState.name + " - fromState: " + fromState.name);
+    console.log("step 1... about to authenticate - toState: " + toState.name + " - fromState: " + fromState.name
+      + " - requireLogin: " + toState.data.requireLogin + " - logged: " + UserFacebookID.logged + " - requireLogin: " + requireLogin);
 
     // NOT authenticated
     if(requireLogin) {
