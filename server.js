@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var mongojs = require('mongojs');
 var db = mongojs('projectlist', ['projectlist']);
+var dbctr = mongojs('contributorslist', ['contributorslist']);
+var dbsrc = mongojs('resourcelist', ['resourcelist']);
 var bodyParser = require('body-parser');
 
 var braintree = require('braintree');
@@ -64,7 +66,65 @@ app.post('/buy-something', function(req, res) {
   });
 });
 
-/**** end braintree *****/
+
+
+/**** start collaborators section ****/
+
+app.get('/contributorslist', function(req, res) {
+  console.log("request");
+
+  dbctr.contributorslist.find(function(err, docs) {
+    console.log(docs);
+    res.json(docs);
+  });
+});
+
+app.post('/contributorslist', function(req, res) {
+  console.log(req.body);
+  dbctr.contributorslist.insert(req.body, function(err, doc) {
+    res.json(doc);
+  });
+});
+
+
+app.delete('/contributorslist/:id', function(req, res) {
+  var id = req.params.id;
+  console.log(id);
+  dbctr.contributorslist.remove({_id: mongojs.ObjectId(id)}, function(err, doc) {
+    res.json(doc);
+  });
+});
+
+
+/**** start resource section ****/
+
+app.get('/resourcelist', function(req, res) {
+  console.log("request");
+
+  dbsrc.resourcelist.find(function(err, docs) {
+    console.log(docs);
+    res.json(docs);
+  });
+});
+
+app.post('/resourcelist', function(req, res) {
+  console.log(req.body);
+  dbsrc.resourcelist.insert(req.body, function(err, doc) {
+    res.json(doc);
+  });
+});
+
+
+app.delete('/resourcelist/:id', function(req, res) {
+  var id = req.params.id;
+  console.log(id);
+  dbsrc.resourcelist.remove({_id: mongojs.ObjectId(id)}, function(err, doc) {
+    res.json(doc);
+  });
+});
+
+
+/**** start projects section ****/
 
 app.get('/projectlist', function(req, res) {
   console.log("request");
@@ -106,7 +166,8 @@ app.put('/projectlist/:id', function(req, res) {
   console.log(req.body.project_title);
   db.projectlist.findAndModify({query: {_id: mongojs.ObjectId(id)},
     update: {$set: {project_title: req.body.project_title, project_overview: req.body.project_overview,
-      project_content: req.body.project_content, project_private: req.body.project_private}},
+      project_content: req.body.project_content, project_private: req.body.project_private,
+      project_price: req.body.project_price, project_last_update: req.body.project_last_update}},
     new: true}, function(err, doc) {
     res.json(doc);
   });
@@ -115,7 +176,8 @@ app.put('/projectlist/:id', function(req, res) {
 /*  search  */
 
 var getArrayProjectList = function(overview, cb) {
-      db.projectlist.find({} , {project_overview:1,_id:0}).toArray(cb);
+  db.projectlist.find({} , {project_overview:1, project_title:1, project_content:1, project_price:1, _id:1}).toArray(cb);
+      /*db.projectlist.find({} , {project_overview:1,_id:0}).toArray(cb);*/
   }
 
 app.get('/search/:text', function(req, res) {

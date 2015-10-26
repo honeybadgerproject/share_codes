@@ -43,3 +43,43 @@ db.projectlist.find().pretty()
  -date_created:
  -last_update:
  -project_extras:
+
+
+///---------------------------------------------------------------
+
+/// show databases
+>show dbs
+
+/// use one database
+>use contributorslist
+
+/// show all the database of contributors
+>db.contributorslist.find()
+
+/// show pretty
+>db.contributorslist.find().pretty()
+
+/// insert a row
+>db.contributorslist.insert({user_owner: 'yabin.perez', id_project: '1234', top_user: 'jupiter' })
+>db.contributorslist.insert({user_owner: 'yabin.perez', id_project: '2442', top_user: 'saturno' })
+
+///---------------------------------------------------------------
+
+/// show databases
+>show dbs
+
+/// use one database
+>use resourcelist
+
+/// show all the database of contributors
+>db.resourcelist.find()
+
+/// show pretty
+>db.resourcelist.find().pretty()
+
+/// insert a row
+>db.resourcelist.insert({user_owner: 'yabin.perez', id_resource: '1234', resource_name: 'github' })
+>db.resourcelist.insert({user_owner: 'yabin.perez', id_resource: '2442', resource_name: 'asana' })
+
+
+///---------------------------------------------------------------

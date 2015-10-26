@@ -2,54 +2,30 @@
 <br>
 <br>
 <br>
+<div ng-controller="hackingZoneCtrl">
 <div class="row">
-    <div class="form-group col-lg-8 col-md-8">
-      <!-- add a new link -->
-      <div class="control-group" id="fields">
-            <label class="control-label" for="field1">Collaborators: </label>
-            <div class="controls">
-                <form role="form" autocomplete="off">
-                    <div class="entry input-group col-xs-3">
-                        <input class="form-control" name="fields[]" type="text" placeholder="Type something" />
-                    	<span class="input-group-btn">
-                            <button class="btn btn-success btn-add" type="button">
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                        </span>
-                    </div>
-                </form>
-            <br>
-            <small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another form collaborator</small>
-            </div>
-        </div>
+  <div class="form-group col-lg-8 col-md-8">
+    <a ng-click="openDialogCollaborator()">+ Add a new collaborator</a>
+    <!-- add new collaborators  -->
+    <div  ng-repeat="collaborator in contributorslist">
+      <label>@ {{collaborator.top_user}}</label>
     </div>
+  </div>
 </div>
 <br>
 <br>
 <div class="row">
     <div class="form-group col-lg-8 col-md-8">
-      <!-- add a new link -->
-      <div class="control-group" id="fields2">
-            <label class="control-label" for="field2">Resources (bitbucket, github, asana, etc...): </label>
-            <div class="controls">
-                <form role="form2" autocomplete="off">
-                    <div class="entry2 input-group col-xs-3">
-                        <input class="form-control" name="fields2[]" type="text" placeholder="Type something" />
-                    	<span class="input-group-btn">
-                            <button class="btn btn-success btn-add2" type="button">
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                        </span>
-                    </div>
-                </form>
-            <br>
-            <small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another form resource</small>
-            </div>
+      <a ng-click="openDialogCollaborator()">+ Add a new resource (bitbucket, github, asana, etc...)</a>
+      <!-- add new resource  -->
+      <div  ng-repeat="resource in resourcelist">
+        <label>{{resource.resource_name}}</label>
       </div>
+
     </div>
 </div>
 <br>
-<br
+<br>
 <div class="row">
     <div class="form-group col-lg-8 col-md-8">
 
@@ -80,57 +56,4 @@
 
     </div>
 </div>
-
-
-<!--<script type="text/javascript">
-
-$(function()
-{
-    $(document).on('click', '.btn-add', function(e)
-    {
-        e.preventDefault();
-
-        var controlForm = $('.controls form:first'),
-            currentEntry = $(this).parents('.entry:first'),
-            newEntry = $(currentEntry.clone()).appendTo(controlForm);
-
-        newEntry.find('input').val('');
-        controlForm.find('.entry:not(:last) .btn-add')
-            .removeClass('btn-add').addClass('btn-remove')
-            .removeClass('btn-success').addClass('btn-danger')
-            .html('<span class="glyphicon glyphicon-minus"></span>');
-    }).on('click', '.btn-remove', function(e)
-    {
-		$(this).parents('.entry:first').remove();
-
-		e.preventDefault();
-		return false;
-	});
-});
-
-$(function()
-{
-    $(document).on('click', '.btn-add2', function(e)
-    {
-        e.preventDefault();
-
-        var controlForm = $('.controls form2:first'),
-            currentEntry = $(this).parents('.entry2:first'),
-            newEntry = $(currentEntry.clone()).appendTo(controlForm);
-
-        newEntry.find('input').val('');
-        controlForm.find('.entry2:not(:last) .btn-add2')
-            .removeClass('btn-add2').addClass('btn-remove2')
-            .removeClass('btn-success').addClass('btn-danger')
-            .html('<span class="glyphicon glyphicon-minus"></span>');
-    }).on('click', '.btn-remove2', function(e)
-    {
-		$(this).parents('.entry2:first').remove();
-
-		e.preventDefault();
-		return false;
-	});
-});
-
-
-</script>-->
+</div>

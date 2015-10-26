@@ -15,7 +15,7 @@
     <!-- project -->
     <div class="form-group col-lg-8 col-md-8  panel panel-default">
       <p>
-        Last update:<time>17th March</time>  -  Created on:<time>17th March</time>
+        Last update:<time>{{project.project_last_update | date:'medium'}}</time>  -  Created on:<time>{{project.project_created_on | date:'medium'}}</time>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button ui-sref="hackingzone">Hacking zone project</button>
       </p>

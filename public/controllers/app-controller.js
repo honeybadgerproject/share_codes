@@ -36,7 +36,7 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
     url: '/projects',
     templateUrl: 'views/projects.html' ,
     data: {
-      requireLogin: true
+      requireLogin: false
     }
   });
   /* add new project */
@@ -67,6 +67,14 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
   $stateProvider.state("preview", {
     url: '/preview',
     templateUrl: 'views/preview.html' ,
+    data: {
+      requireLogin: false
+    }
+  });
+  /* jump to preview the project */
+  $stateProvider.state("viewproject", {
+    url: '/viewproject',
+    templateUrl: 'views/viewproject.html' ,
     data: {
       requireLogin: false
     }
@@ -110,7 +118,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook) {
     };
 
 
-    var refresh = function() {
+    var refreshProjectList = function() {
       $http.get('/projectlist').success(function(response) {
         console.log("refresh");
         $scope.projectlist = response;
@@ -118,22 +126,27 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook) {
       });
     };
 
-    refresh();
+    refreshProjectList();
 
 
     $scope.addnewproject = function(newproject) {
       console.log(newproject);
       console.log($scope.project);
+
+      // asign last updated project and created on
+      newproject.project_last_update = new Date();
+      newproject.project_created_on = new Date();
+
       $http.post('/projectlist', newproject).success(function(response) {
         console.log(response);
-        refresh();
+        refreshProjectList();
       });
     };
 
     $scope.remove = function(id) {
       console.log(id);
       $http.delete('/projectlist/' + id).success(function(response) {
-        refresh();
+        refreshProjectList();
       });
     };
 
@@ -151,8 +164,14 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook) {
       console.log($scope.project);
       console.log("end add this edit project");
       console.log($scope.project._id);
+
+      // update date
+      console.log("old date " + $scope.project.project_last_update);
+      $scope.project.project_last_update = new Date();
+      console.log("new date " + $scope.project.project_last_update);
+
       $http.put('/projectlist/' + $scope.project._id, $scope.project).success(function(response) {
-        refresh();
+        refreshProjectList();
       });
     };
 
@@ -160,36 +179,39 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook) {
 
     $scope.search = function() {
 
-      console.log($scope.search.text_search);
-      $scope.findResults = new Array();
-      var findRes = new Array();
-        console.log("antes de if: " + $scope.search.text_search);
+      console.log("search text: " + $scope.search.text_search);
+
+      //var findRes = new Array();
+      //console.log("antes de if: " + $scope.search.text_search);
       if($scope.search.text_search)
       {
         $http.get('/search/' + $scope.search.text_search, $scope.search).success(function(response) {
-          findRes = response;
-          console.log("inicio findRes: ");
-          console.log(findRes);
-          console.log("fin findRes");
+          //findRes = response;
+          var items = [];
+          //console.log("inicio findRes: ");
+          //console.log(response);
+          //console.log("fin findRes");
 
           ////--------------------------------------
           var indexF = 0;
           var str = new String();
           var text = $scope.search.text_search;
-          for (i = 0; i < findRes.length; i++) {
-            var tempFind = findRes[i].project_overview;
-            console.log("primer for: " + tempFind);
-            if(tempFind)
+          for (i = 0; i < response.length; i++) {
+            var tempFindOverview = response[i].project_overview;
+            console.log("primer for: " + tempFindOverview);
+            if(tempFindOverview)
             {
-              var n = tempFind.search(text);
-              console.log("number: " + n);
+              var n = tempFindOverview.search(text);
+              //console.log("number: " + n);
               if(n >= 0) {
-                $scope.findResults[indexF] = tempFind;
+                items.push(response[i]);
+                console.log("inex: " + indexF + " - item: " + items[indexF].project_title);
                 indexF++;
               }
             }
-
           }
+
+          $scope.findresults = items;
         });
       }
     };

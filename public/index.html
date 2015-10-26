@@ -28,6 +28,18 @@
               <li><a ui-sref="search">Search</a></li>
               <li><a ui-sref="projects">My Projects</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><!--<a href="#">Sign Off</a>-->
+              <div ng-controller="loginCtrl">
+                  <br>
+                  <a data-ng-show="!logged" data-ng-disabled="!facebookReady" data-ng-click="IntentLogin()">Login</a>
+                  <a data-ng-show="logged" data-ng-disabled="!facebookReady" data-ng-click="logout()">Logout</a>
+                  <div>
+                    <debug val="user"></debug>
+                  </div>
+              </div>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
@@ -86,6 +98,8 @@
     <script src="controllers/login-controller.js"></script>
     <!-- braintree controller -->
     <script src="controllers/braintree-controller.js"></script>
+    <!-- hacking zone controller -->
+    <script src="controllers/hacking-zone-controller.js"></script>
 
 
   </body>

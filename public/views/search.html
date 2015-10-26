@@ -33,13 +33,13 @@
 <hr>
 
 <!-- search results -->
-<div ng-repeat="find in findResults">
+<div ng-repeat="find in findresults">
   <div class="row">
     <div class="col-lg-8 col-md-8">
 
              <article class="card__article">
-                   <h3>{{title}}<h3>
-                   <h4>{{find}}</h4>
+                   <h3>{{find.project_title}}</h3> <a ng-click="edit(find._id)" ui-sref="viewproject">View</a>
+                   <h4>{{find.project_overview}}</h4>
                    <h4>rate: {{rate}}</h4>
                    <div class="dropdown">
                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Collaborators
