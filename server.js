@@ -173,20 +173,16 @@ app.put('/tablist/:id', function(req, res) {
 
 /**** start projects section ****/
 
-app.get('/refreshProjectWithUser/', function(req, res) {
-//  var id = req.params.id;
-//  console.log(id);
-
-});
-
-/*app.get('/refreshprojectlist/:id', function(req, res) {
-  console.log("request");
+app.get('/refreshProjectWithUser/:id', function(req, res) {
   var id = req.params.id;
+  console.log(id);
+
   db.projectlist.find({ "user_owner": id} , function(err, docs) {
     console.log(docs);
     res.json(docs);
   });
-});*/
+
+});
 
 app.post('/projectlist', function(req, res) {
   console.log(req.body);

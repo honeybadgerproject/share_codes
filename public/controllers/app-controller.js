@@ -123,11 +123,15 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
       if(UserFacebookID.user.id) {
         console.log("in user face id for projects");
         console.log(UserFacebookID.user.id);
+
+        $http.get('/refreshProjectWithUser/' + UserFacebookID.user.id).success(function(response) {
+          console.log("refresh");
+          $scope.projectlist = response;
+          $scope.project = "";
+        });
       }
 
-        $http.get('/refreshProjectWithUser/').success(function(response) {
 
-        });
     };
 
   /*  var refreshProjectList = function() {
@@ -152,6 +156,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
       // asign last updated project and created on
       newproject.project_last_update = new Date();
       newproject.project_created_on = new Date();
+      newproject.user_owner = UserFacebookID.user.id;
 
       $http.post('/projectlist', newproject).success(function(response) {
         console.log(response);
