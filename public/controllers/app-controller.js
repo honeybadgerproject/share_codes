@@ -120,7 +120,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
 
     var refreshProjectList = function() {
       console.log("UserFacebookID.user.id");
-      console.log($scope.project);
+      console.log(UserFacebookID.user.id);
 
         $http.get('/refreshProjectWithUser/').success(function(response) {
 
