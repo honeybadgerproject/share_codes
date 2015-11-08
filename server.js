@@ -173,10 +173,10 @@ app.put('/tablist/:id', function(req, res) {
 
 /**** start projects section ****/
 
-app.get('/refreshprojectlist/:user', function(req, res) {
+app.get('/refreshprojectlist/:idf', function(req, res) {
   console.log("request");
 
-  db.projectlist.find({ "user_owner": user} , function(err, docs) {
+  db.projectlist.find({ "user_owner": id} , function(err, docs) {
     console.log(docs);
     res.json(docs);
   });
