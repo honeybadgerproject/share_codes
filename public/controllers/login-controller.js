@@ -152,7 +152,8 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
         $scope.$apply(function() {
           $scope.user = response;
           UserFacebookID.user = response;
-          console.log("1. send the current user to sever" + UserFacebookID.user);
+          console.log("1. send the current user to sever");
+          console.log(UserFacebookID.user);
         });
       });
     };
