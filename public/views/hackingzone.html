@@ -5,10 +5,13 @@
 <div ng-controller="hackingZoneCtrl">
 <div class="row">
   <div class="form-group col-lg-8 col-md-8">
+    <!--- dialog --->
+
+    <!--- end ---->
     <a ng-click="openDialogCollaborator()">+ Add a new collaborator</a>
     <!-- add new collaborators  -->
     <div  ng-repeat="collaborator in contributorslist">
-      <label>@ {{collaborator.top_user}}</label>
+      <label>@ {{collaborator.top_user}}</label>&nbsp;&nbsp;&nbsp;&nbsp;<a ng-click="removecontributor(collaborator._id)">- delete</a>
     </div>
   </div>
 </div>
@@ -16,10 +19,11 @@
 <br>
 <div class="row">
     <div class="form-group col-lg-8 col-md-8">
-      <a ng-click="openDialogCollaborator()">+ Add a new resource (bitbucket, github, asana, etc...)</a>
+      <!------dialog------>
+      <a ng-click="openDialogResource()">+ Add a new resource (bitbucket, github, asana, etc...)</a>
       <!-- add new resource  -->
       <div  ng-repeat="resource in resourcelist">
-        <label>{{resource.resource_name}}</label>
+        <label>{{resource.resource_name}}</label>&nbsp;&nbsp;&nbsp;&nbsp;<a ng-click="removeresource(resource._id)">- delete</a>
       </div>
 
     </div>
@@ -27,33 +31,30 @@
 <br>
 <br>
 <div class="row">
-    <div class="form-group col-lg-8 col-md-8">
+  <div class="form-group col-lg-8 col-md-8">
+    <a>+ Add a new tab</a><br><br>
+    <!-- dialog 2 -->
+    <ul class="nav nav-tabs">
 
-      <ul id="myTab" class="nav nav-tabs">
-        <li class="active"><a href="#home" data-target="#home, #home_else" data-toggle="tab">Content</a></li>
-        <li><a href="#profile" data-target="#profile, #profile_else" data-toggle="tab">+</a></li>
-      </ul>
+        <li ng-repeat="tab in tablist"><a data-toggle="tab" ng-click="edittab(tab._id)" href="{{'#tab' + $index}}">{{tab.tab_name}}</a></li>
+        <!--<li><a data-toggle="tab" href="#tab1">tab 1</a></li>-->
 
-      <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade in active" id="home">
-          <p>Content 1.</p>
-        </div>
-        <div class="tab-pane fade" id="profile">
-          <p>Content 2.</p>
-        </div>
-      </div>
+    </ul>
 
-      <hr>
-
-      <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade in active" id="home_else">
-          <p>Content 111.</p>
+    <div class="tab-content">
+        <div ng-repeat="tab in tablist" id="{{'tab' + $index}}" class="tab-pane fade">
+          <textarea class="form-control"  rows="7" id="content" ng-model="tab.tab_content" >{{tab.tab_content}}</textarea>
+          <label>tab name:  </label><input type="text" value="{{tab.tab_name}}" ng-model="tab.tab_name" ><button ng-click="updatetab(tab)">save</button>
         </div>
-        <div class="tab-pane fade" id="profile_else">
-          <p>Content 2222.</p>
-        </div>
-      </div>
+        <!--<div id="tab1" class="tab-pane fade">
+          <textarea class="form-control"  rows="7" id="content"></textarea>
+        </div>-->
 
     </div>
+
+
+    <hr>
+
+  </div>
 </div>
 </div>

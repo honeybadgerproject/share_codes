@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp',['ui.router', 'facebook', 'braintree-angular', 'ct.ui.router.extras', 'ui.bootstrap']);
+var myApp = angular.module('myApp',['ui.router', 'facebook', 'braintree-angular', 'ct.ui.router.extras', 'ui.bootstrap', 'ui.bootstrap.modal']);
 
 myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
 
@@ -94,7 +94,7 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
 
 
 
-myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook) {
+myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFacebookID) {
 
     console.log("heloo wombath codes");
 
@@ -119,7 +119,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook) {
 
 
     var refreshProjectList = function() {
-      $http.get('/projectlist').success(function(response) {
+      $http.get('/refreshprojectlist/' + UserFacebookID.user).success(function(response) {
         console.log("refresh");
         $scope.projectlist = response;
         $scope.project = "";

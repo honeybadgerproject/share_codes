@@ -4,6 +4,7 @@ var mongojs = require('mongojs');
 var db = mongojs('projectlist', ['projectlist']);
 var dbctr = mongojs('contributorslist', ['contributorslist']);
 var dbsrc = mongojs('resourcelist', ['resourcelist']);
+var dbtab = mongojs('tablist', ['tablist']);
 var bodyParser = require('body-parser');
 
 var braintree = require('braintree');
@@ -123,13 +124,59 @@ app.delete('/resourcelist/:id', function(req, res) {
   });
 });
 
+/**** start tab section ****/
+
+app.get('/tablist', function(req, res) {
+  console.log("request");
+
+  dbtab.tablist.find(function(err, docs) {
+    console.log(docs);
+    res.json(docs);
+  });
+});
+
+app.post('/tablist', function(req, res) {
+  console.log(req.body);
+  dbtab.tablist.insert(req.body, function(err, doc) {
+    res.json(doc);
+  });
+});
+
+
+app.delete('/tablist/:id', function(req, res) {
+  var id = req.params.id;
+  console.log(id);
+  dbtab.tablist.remove({_id: mongojs.ObjectId(id)}, function(err, doc) {
+    res.json(doc);
+  });
+});
+
+app.get('/tablist/:id', function(req, res) {
+  var id = req.params.id;
+  console.log(id);
+  console.log("into server");
+  dbtab.tablist.findOne({_id: mongojs.ObjectId(id)}, function(err, doc) {
+    res.json(doc);
+  });
+});
+
+app.put('/tablist/:id', function(req, res) {
+  var id = req.params.id;
+  console.log(req.body.tab_name);
+  dbtab.tablist.findAndModify({query: {_id: mongojs.ObjectId(id)},
+    update: {$set: {user_owner: req.body.user_owner, id_tab: req.body.id_tab,
+      tab_name: req.body.tab_name, tab_content: req.body.tab_content}},
+    new: true}, function(err, doc) {
+    res.json(doc);
+  });
+});
 
 /**** start projects section ****/
 
-app.get('/projectlist', function(req, res) {
+app.get('/refreshprojectlist/:user', function(req, res) {
   console.log("request");
 
-  db.projectlist.find(function(err, docs) {
+  db.projectlist.find({ "user_owner": user} , function(err, docs) {
     console.log(docs);
     res.json(docs);
   });

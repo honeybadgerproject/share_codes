@@ -83,3 +83,20 @@ db.projectlist.find().pretty()
 
 
 ///---------------------------------------------------------------
+
+
+/// use one database
+>use tablist
+
+/// show all the database of contributors
+>db.tablist.find()
+
+/// show pretty
+>db.tablist.find().pretty()
+
+/// insert a row
+>db.tablist.insert({user_owner: 'yabin.perez', id_tab: '1234', tab_name: 'github', tab_content: 'contenido 1' })
+>db.tablist.insert({user_owner: 'yabin.perez', id_tab: '2442', tab_name: 'asana', tab_content: 'contenido 2' })
+
+
+///---------------------------------------------------------------

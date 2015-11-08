@@ -1,0 +1,13 @@
+<div>
+	<div class="modal-header">
+	    <h3>Add a new Resource</h3>
+	</div>
+	<div class="modal-body">
+		<label for="resource">{}:</label>
+		<input type="text" class="form-control" id="resource" placeholder="resource's name" ng-model="resource.resource_name">
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="addnewresource(resource)" ng-click="$close()">OK</button>
+        <button class="btn btn-warning" ng-click="$dismiss()">Cancel</button>
+    </div>
+</div>

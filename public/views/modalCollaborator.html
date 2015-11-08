@@ -1,0 +1,13 @@
+<div>
+	<div class="modal-header">
+	    <h3>Add a new Collaborator</h3>
+	</div>
+	<div class="modal-body">
+		<label for="user">@:</label>
+		<input type="text" class="form-control" id="user" placeholder="collaborator's name" ng-model="contributor.top_user">
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="addnewcontributor(contributor)">OK</button>
+        <button class="btn btn-warning" ng-click="$dismiss()">Cancel</button>
+    </div>
+</div>
