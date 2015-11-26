@@ -1,0 +1,27 @@
+{
+  "name": "MarketCodes",
+  "version": "1.0.0",
+  "description": "market codes",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yabin Monroy (yabin.monroy@gmail.com)",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.4.7",
+    "angular-facebook": "0.0.2",
+    "body-parser": "^1.14.1",
+    "braintree": "^1.30.0",
+    "braintree-angular": "^1.3.1",
+    "braintree-web": "^2.15.4",
+    "express": "^4.13.3",
+    "fs": "0.0.2",
+    "moment": "^2.10.6",
+    "mongojs": "^1.4.1",
+    "nodemon": "^1.8.1"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
+  }
+}

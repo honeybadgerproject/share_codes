@@ -71,10 +71,11 @@ app.post('/buy-something', function(req, res) {
 
 /**** start collaborators section ****/
 
-app.get('/contributorslist', function(req, res) {
+app.get('/contributorslistowner/:id', function(req, res) {
   console.log("request");
+  var id = req.params.id;
 
-  dbctr.contributorslist.find(function(err, docs) {
+  dbctr.contributorslist.find({ "user_owner": id} , function(err, docs) {
     console.log(docs);
     res.json(docs);
   });
@@ -99,10 +100,11 @@ app.delete('/contributorslist/:id', function(req, res) {
 
 /**** start resource section ****/
 
-app.get('/resourcelist', function(req, res) {
+app.get('/resourcelistowner/:id', function(req, res) {
   console.log("request");
+  var id = req.params.id;
 
-  dbsrc.resourcelist.find(function(err, docs) {
+  dbsrc.resourcelist.find( { "user_owner": id} , function(err, docs) {
     console.log(docs);
     res.json(docs);
   });
@@ -126,10 +128,11 @@ app.delete('/resourcelist/:id', function(req, res) {
 
 /**** start tab section ****/
 
-app.get('/tablist', function(req, res) {
+app.get('/tablistowner/:id', function(req, res) {
   console.log("request");
+  var id = req.params.id;
 
-  dbtab.tablist.find(function(err, docs) {
+  dbtab.tablist.find( { "user_owner": id} , function(err, docs) {
     console.log(docs);
     res.json(docs);
   });

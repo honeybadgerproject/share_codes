@@ -1,36 +1,50 @@
-<br>
+<!-- Banner Area
+   ====================================================== -->
+   <section id="home">
+     <div id="particles" class="inner-particle">
+
+           <div class="cont-area-inner">
+             <div class="inner-rocket-img"><img src="img/rocket-inner.png" alt=""></div>
+               <div class="heading-area">
+                 <div class="container clearfix">
+                    <div class="input-group col-md-8">
+                      <input type="text" class="form-control" placeholder="search" id="search" ng-model="search.text_search">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary" ng-click="search()" ><label class="fa fa-search"></label></button>
+                      </span>
+                    </div>
+                    <div class="col-md-4">
+                           <!--<ul class="breadcrumbs-inner">
+                               <li class="active"><a href="index.html">Home</a></li>
+                               <li>About Us</li>-->
+                    </div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Start: Banner Bottom -->
+           <div class="banner-btm-img"><img src="img/buildings.png" alt=""></div>
+           <!-- End: Banner Bottom -->
+
+     </div>
+   </section>
+   <!-- =================================================
+   Banner Area End -->
+
+
+<!--<br>
 <br>
 <br>
 <br>
 <div class="row">
   <form>
-    <!-- input field -->
     <div class="form-group col-lg-8 col-md-8">
       <label for="search">Search:</label>
       <input type="text" class="form-control" id="search" ng-model="search.text_search">
       <input type="submit" value="Search"  ng-click="search()" >
     </div>
   </form>
-</div>
-<div class="row">
-  <form>
-    <br>
-    <!-- checkbox field -->
-    <p>
-      <input type="checkbox" class="filled-in" ng-model="search.code" id="filled-in-box">
-      <label for="filled-in-box">Codes</label>
-    </p>
-    <p>
-      <input type="checkbox" class="filled-in" ng-model="search.library" id="filled-in-box">
-      <label for="filled-in-box">Libraries</label>
-    </p>
-    <p>
-      <input type="checkbox" class="filled-in" ng-model="search.electronic" id="filled-in-box">
-      <label for="filled-in-box">Electronics</label>
-    </p>
-  </form>
-</div>
-<hr>
+</div>-->
 
 <!-- search results -->
 <div ng-repeat="find in findresults">

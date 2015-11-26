@@ -31,6 +31,14 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
       requireLogin: false
     }
   });
+  /* test elements*/
+  $stateProvider.state("testelement", {
+    url: '/testelement',
+    templateUrl: 'views/testElement.html' ,
+    data: {
+      requireLogin: false
+    }
+  });
   /* project */
   $stateProvider.state("projects", {
     url: '/projects',
@@ -133,18 +141,6 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
 
 
     };
-
-  /*  var refreshProjectList = function() {
-
-      var id = UserFacebookID.user.id;
-      console.log("2. set the user id for refresh");
-      console.log(UserFacebookID.user.id);
-      $http.get('/refreshprojectlist/' + id).success(function(response) {
-        console.log("refresh");
-        $scope.projectlist = response;
-        $scope.project = "";
-      });
-    };*/
 
     refreshProjectList();
 
