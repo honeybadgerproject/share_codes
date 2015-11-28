@@ -57,6 +57,10 @@
 <br>
 <br>
 
+<!-- show the projects -->
+<div ng-repeat="project in projectlist">
+  <div class="row">
+    <!-- project -->
 <!-- Blog Area Start
     ====================================================== -->
     <section class="our-blog-home text-center">
@@ -83,10 +87,11 @@
                 <input type="checkbox" id="s3">
                 <label>&nbsp;&nbsp;&nbsp;&nbsp;rate: &nbsp;</label>5
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button type="button" class="btn btn-primary btn-short">Edit</button>
-                <button type="button" class="btn btn-primary btn-short">Delete</button>
+                <button type="button" class="btn btn-primary btn-short" ng-click="edit(project._id)" ui-sref="saveproject">Edit</button>
+                <button type="button" class="btn btn-primary btn-short" ng-click="remove(project._id)" >Delete</button>
+                <button type="button" class="btn btn-primary btn-short" ng-click="edit(project._id)" ui-sref="hackingzone">Hacking Zone</button>
                 <br><br>
-                <div class="blog-view-more animated visible" data-animation="fadeIn" data-animation-delay="200"><a href="#" class="view-more">Preview</a></div>
+                <div class="blog-view-more animated visible" data-animation="fadeIn" data-animation-delay="200"><a href="#" class="view-more" ng-click="edit(project._id)" ui-sref="preview">Preview</a></div>
 
                 <!-- End: View More Button -->
             </div>
@@ -94,3 +99,5 @@
     </section>
     <!-- =================================================
     Blog Area End -->
+  </div>
+</div>

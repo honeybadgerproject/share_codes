@@ -50,7 +50,50 @@
 <div ng-repeat="find in findresults">
   <div class="row">
     <div class="col-lg-8 col-md-8">
+      <!-- Blog Area Start
+          ====================================================== -->
+          <section class="our-blog-home text-center">
+          	<div class="container clearfix">
+                  <div class="blog-home-cont">
+                  	<div class="heading-container visible" data-animation="fadeIn" data-animation-delay="200"><h4><i class="fa fa-bullhorn"></i> <i>{{find.project_title}}</i></h4></div>
+                      <ul class="blog-conts">
 
+                      	<!-- Start: Blog 01 -->
+                      	<li class="animated visible" data-animation="fadeInUp" data-animation-delay="200">
+                          	<!--<div class="blog-date"><span>17</span>Dec</div>-->
+                              <div class="blog-texts">
+                              	<h5>{{find.project_overview}}</h5>
+                                  <p class="blog-by">Posted By : Anju Droach in Web Designing</p>
+                                  <div><span>Last update:<time>{{find.project_last_update | date:'medium'}}</time>  -  Created on:<time>{{find.project_created_on | date:'medium'}}</span></div>
+                                  <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>-->
+                                  <p>rate: {{find.rate}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <div class="dropdown">
+                                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Collaborators
+                                        <span class="caret"></span>
+                                      </button>
+                                      <ul class="dropdown-menu">
+                                        <li><a href="#">Collaborator 1</a></li>
+                                        <li><a href="#">Collaborator 2</a></li>
+                                      </ul>
+                                    </div>
+                                  </p>
+                              </div>
+                          </li>
+                      	<!-- End: Blog 01 -->
+
+                      </ul>
+                      <!-- Start: View More Button -->
+
+                      <div class="blog-view-more animated visible" data-animation="fadeIn" data-animation-delay="200"><a href="#" class="view-more">buy $</a></div>
+
+                      <!-- End: View More Button -->
+                  </div>
+              </div>
+          </section>
+          <!-- =================================================
+          Blog Area End -->
+
+<!--
              <article class="card__article">
                    <h3>{{find.project_title}}</h3> <a ng-click="edit(find._id)" ui-sref="viewproject">View</a>
                    <h4>{{find.project_overview}}</h4>
@@ -66,7 +109,7 @@
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                      <input type="button" value="buy $" ui-sref="pay">
                    </div>
-              </article>
+              </article>-->
 
     </div>
   </div>
