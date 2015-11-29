@@ -44,7 +44,7 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
     url: '/projects',
     templateUrl: 'views/projects.html' ,
     data: {
-      requireLogin: false
+      requireLogin: true
     }
   });
   /* add new project */
@@ -52,12 +52,13 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
     url: '/new',
     templateUrl: 'views/newproject.html' ,
     data: {
-      requireLogin: false
+      requireLogin: true
     }
   });
   /* edit and save new project */
   $stateProvider.state("saveproject", {
     url: '/update',
+    abstract: true,
     templateUrl: 'views/saveproject.html' ,
     data: {
       requireLogin: false
