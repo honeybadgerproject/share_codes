@@ -22,7 +22,7 @@ myLogin.run(function ($rootScope, $state, $location, UserFacebookID ) {
       + " - requireLogin: " + toState.data.requireLogin + " - logged: " + UserFacebookID.logged + " - requireLogin: " + requireLogin);
 
     // NOT authenticated
-    if(requireLogin) {
+    if(!requireLogin) {
 
       console.log("step 2... save current state ");
       UserFacebookID.scopeState = toState.name;
