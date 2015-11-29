@@ -34,6 +34,7 @@ myLogin.run(function ($rootScope, $state, $location, UserFacebookID ) {
       return;
 
     }
+    console.log(">>>> out of scope on");
   });
 });
 

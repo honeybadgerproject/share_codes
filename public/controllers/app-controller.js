@@ -129,7 +129,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
 
     var refreshProjectList = function() {
       console.log("UserFacebookID.user.id");
-      if(UserFacebookID.user.id) {
+      if(UserFacebookID.logged) {
         console.log("in user face id for projects");
         console.log(UserFacebookID.user.id);
 
