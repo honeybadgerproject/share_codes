@@ -105,7 +105,7 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
 
 myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFacebookID) {
 
-    console.log("heloo wombath codes");
+    console.log("heloo wombath codes - inside AppCtrl");
 
     $scope.changeStyle1 = function() {
       //$scope.
@@ -128,7 +128,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
 
 
     var refreshProjectList = function() {
-      console.log("UserFacebookID.user.id");
+      console.log("UserFacebookID.logged:  " + UserFacebookID.logged );
       if(UserFacebookID.logged) {
         console.log("in user face id for projects");
         console.log(UserFacebookID.user.id);
