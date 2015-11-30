@@ -76,7 +76,7 @@ myLogin.service('loginModal', function ($modal, $rootScope) {
 
 });
 
-myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebook, UserFacebookID) {
+myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebook, UserFacebookID, refreshProjectList) {
 
   console.log("heloo wombath codes - inside LoginCtrl");
     /******************** facebook login **************************/

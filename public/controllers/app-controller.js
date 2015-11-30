@@ -101,9 +101,31 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
 });
 
 
+myLogin.service('refreshProjectList', function ($modal, $rootScope) {
+
+  console.log("heloo wombath codes - inside refreshProjectListService");
+
+  var refreshProjectList = function() {
+      console.log("UserFacebookID.logged:  " + UserFacebookID.logged );
+      if(UserFacebookID.logged == true) {
+        console.log("in user face id for projects");
+        console.log(UserFacebookID.user.id);
+
+        $http.get('/refreshProjectWithUser/' + UserFacebookID.user.id).success(function(response) {
+          console.log("refresh");
+          $scope.projectlist = response;
+          $scope.project = "";
+        });
+      }
 
 
-myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFacebookID) {
+    };
+
+});
+
+
+
+myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFacebookID, refreshProjectList) {
 
     console.log("heloo wombath codes - inside AppCtrl");
 
@@ -127,7 +149,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
     };
 
 
-    var refreshProjectList = function() {
+  /*  var refreshProjectList = function() {
       console.log("UserFacebookID.logged:  " + UserFacebookID.logged );
       if(UserFacebookID.logged == true) {
         console.log("in user face id for projects");
@@ -141,7 +163,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
       }
 
 
-    };
+    };*/
 
     refreshProjectList();
 
