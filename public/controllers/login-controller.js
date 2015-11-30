@@ -135,7 +135,7 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
           $scope.logged = true;
           UserFacebookID.logged = true;
           $scope.me();
-          console.log("step 6... jumping to the previus state");
+          console.log("step 5... jumping to the previus state");
           if(UserFacebookID.scopeState != "index") {
             $state.go(UserFacebookID.scopeState);
           }
@@ -153,12 +153,14 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
         /// Using $scope.$apply since this happens outside angular framework.
         ///
 
-        console.log("step 5... adding the user info");
+        console.log("step 6... adding the user info");
         $scope.$apply(function() {
           $scope.user = response;
           UserFacebookID.user = response;
+          //UserFacebookID.logged = true;
           console.log("1. send the current user to sever");
           console.log(UserFacebookID.user);
+          refreshProjectList();
         });
       });
     };

@@ -154,6 +154,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
       newproject.project_last_update = new Date();
       newproject.project_created_on = new Date();
       newproject.user_owner = UserFacebookID.user.id;
+      newproject.user_name = UserFacebookID.user.name;
 
       $http.post('/projectlist', newproject).success(function(response) {
         console.log(response);
