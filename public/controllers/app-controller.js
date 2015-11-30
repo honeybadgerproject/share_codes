@@ -101,11 +101,11 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
 });
 
 
-myApp.service('refreshProjectList', function ($modal, $rootScope) {
+myApp.service('refreshProjectList', function ($modal, $rootScope, UserFacebookID) {
 
   console.log("heloo wombath codes - inside refreshProjectListService");
 
-  var refreshProjectList = function() {
+  this.refreshProjectList = function() {
       console.log("UserFacebookID.logged:  " + UserFacebookID.logged );
       if(UserFacebookID.logged == true) {
         console.log("in user face id for projects");
@@ -120,6 +120,8 @@ myApp.service('refreshProjectList', function ($modal, $rootScope) {
 
 
     };
+
+    //return refreshProjectList();
 
 });
 
@@ -149,7 +151,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
     };
 
 
-  /*  var refreshProjectList = function() {
+      /*var refreshProjectList = function() {
       console.log("UserFacebookID.logged:  " + UserFacebookID.logged );
       if(UserFacebookID.logged == true) {
         console.log("in user face id for projects");
@@ -163,9 +165,9 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
       }
 
 
-    };*/
+    }; */
 
-    refreshProjectList();
+    refreshProjectList.refreshProjectList();
 
 
     $scope.addnewproject = function(newproject) {
@@ -180,14 +182,14 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
 
       $http.post('/projectlist', newproject).success(function(response) {
         console.log(response);
-        refreshProjectList();
+        refreshProjectList.refreshProjectList();
       });
     };
 
     $scope.remove = function(id) {
       console.log(id);
       $http.delete('/projectlist/' + id).success(function(response) {
-        refreshProjectList();
+        refreshProjectList.refreshProjectList();
       });
     };
 
@@ -212,7 +214,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
       console.log("new date " + $scope.project.project_last_update);
 
       $http.put('/projectlist/' + $scope.project._id, $scope.project).success(function(response) {
-        refreshProjectList();
+        refreshProjectList.refreshProjectList();
       });
     };
 

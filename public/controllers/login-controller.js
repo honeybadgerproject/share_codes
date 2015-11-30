@@ -92,6 +92,7 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
     $scope.byebye = false;
     $scope.salutation = false;
 
+
     ///
     /// Watch for Facebook to be ready.
     ///There's also the event that could be used
@@ -160,7 +161,7 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
           //UserFacebookID.logged = true;
           console.log("1. send the current user to sever");
           console.log(UserFacebookID.user);
-          refreshProjectList();
+          refreshProjectList.refreshProjectList();
         });
       });
     };
