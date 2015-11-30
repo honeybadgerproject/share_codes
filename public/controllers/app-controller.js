@@ -101,7 +101,7 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
 });
 
 
-myLogin.service('refreshProjectList', function ($modal, $rootScope) {
+myApp.service('refreshProjectList', function ($modal, $rootScope) {
 
   console.log("heloo wombath codes - inside refreshProjectListService");
 
