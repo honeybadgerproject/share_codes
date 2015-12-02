@@ -172,8 +172,6 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
           //UserFacebookID.logged = true;
           console.log("1. send the current user to sever");
           console.log(UserFacebookID.user);
-
-          ///// call refreshProjectList
           refreshProjectList();
 
         });
