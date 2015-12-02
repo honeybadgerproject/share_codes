@@ -20,8 +20,9 @@ myLogin.run(function ($rootScope, $state, $location, UserFacebookID ) {
     var requireLogin = toState.data.requireLogin && UserFacebookID.logged == 'false';
 
 
-    console.log("step 1... about to authenticate - toState: " + toState.name + " - fromState: " + fromState.name
-      + " - requireLogin: " + toState.data.requireLogin + " - logged: " + UserFacebookID.logged + " - requireLogin: " + requireLogin);
+    console.log("step 1... about to authenticate - toState: " + toState.name +
+    " - requireLogin: " + toState.data.requireLogin + " - logged: " + UserFacebookID.logged +
+    " - requireLogin: " + requireLogin);
 
     // NOT authenticated
     if(requireLogin) {
@@ -35,7 +36,7 @@ myLogin.run(function ($rootScope, $state, $location, UserFacebookID ) {
 
 
       ///// >>> emit
-      $scope.refreshProjectList = function(){
+      $rootScope.refreshProjectList = function(){
                 $scope.$emit('refreshProjectList', {});// res - your data
       }
       return;
