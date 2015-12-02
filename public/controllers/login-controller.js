@@ -34,11 +34,21 @@ myLogin.run(function ($rootScope, $state, $location, UserFacebookID ) {
       $state.go("index");
       event.preventDefault();
 
+      return;
+    }
 
+    // IS authenticated but not by login
+    else if(UserFacebookID.logged) {
+      console.log("step 1,2... save current state " + toState.name);
+      UserFacebookID.scopeState = toState.name;
+
+      console.log("step 1,3... jump to login  " +   UserFacebookID.scopeState);
+      $state.go("index");
+      event.preventDefault();
 
       return;
-
     }
+
     console.log(">>>> out of scope on");
   });
 });
@@ -201,6 +211,11 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
         $scope.$apply(function() {
           $scope.salutation = true;
           $scope.byebye     = false;
+          //$scope.user   = {};
+          $scope.logged = true;
+          //UserFacebookID.user = {};
+          UserFacebookID.logged = true;
+
         });
       } else {
         $scope.$apply(function() {
