@@ -26,12 +26,13 @@ myLogin.run(function ($rootScope, $state, $location, UserFacebookID ) {
     // NOT authenticated
     if(requireLogin) {
 
-      console.log("step 2... save current state ");
+      console.log("step 2... save current state " + toState.name);
       UserFacebookID.scopeState = toState.name;
 
-      console.log("step 3... jump to login");
-      $state.go("index");
+      console.log("step 3... jump to login  " +   UserFacebookID.scopeState);
       event.preventDefault();
+      $state.go("index");
+
 
       ///// >>> emit
       $scope.refreshProjectList = function(){
