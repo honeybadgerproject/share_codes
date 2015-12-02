@@ -31,14 +31,19 @@ myLogin.run(function ($rootScope, $state, $location, UserFacebookID ) {
       UserFacebookID.scopeState = toState.name;
 
       console.log("step 3... jump to login  " +   UserFacebookID.scopeState);
-      event.preventDefault();
-      $state.go("index");
 
 
       ///// >>> emit
       $rootScope.refreshProjectList = function(){
-                $scope.$emit('refreshProjectList', {});// res - your data
+        console.log("/////>>>> refreshProjectList in emit");
+        $scope.$emit('refreshProjectList', {});// res - your data
       }
+
+      $state.go("index");
+      event.preventDefault();
+
+
+
       return;
 
     }
