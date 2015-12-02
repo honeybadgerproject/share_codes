@@ -145,10 +145,11 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
           $scope.logged = true;
           UserFacebookID.logged = true;
 
+          $scope.me();
+
           ///// call refreshProjectList
           refreshProjectList();
 
-          $scope.me();
           console.log("step 5... jumping to the previus state");
           if(UserFacebookID.scopeState != "index") {
             $state.go(UserFacebookID.scopeState);
