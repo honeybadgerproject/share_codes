@@ -147,9 +147,6 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
 
           $scope.me();
 
-          ///// call refreshProjectList
-          refreshProjectList();
-
           console.log("step 5... jumping to the previus state");
           if(UserFacebookID.scopeState != "index") {
             $state.go(UserFacebookID.scopeState);
@@ -175,7 +172,10 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
           //UserFacebookID.logged = true;
           console.log("1. send the current user to sever");
           console.log(UserFacebookID.user);
-        //  refreshProjectList.refreshProjectList();
+
+          ///// call refreshProjectList
+          refreshProjectList();
+
         });
       });
     };
