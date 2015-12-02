@@ -43,8 +43,8 @@ myLogin.run(function ($rootScope, $state, $location, UserFacebookID ) {
       UserFacebookID.scopeState = toState.name;
 
       console.log("step 1,3... jump to login  " +   UserFacebookID.scopeState);
-      $state.go("index");
-      event.preventDefault();
+      //$state.go("index");
+      //event.preventDefault();
 
       return;
     }
