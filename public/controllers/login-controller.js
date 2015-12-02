@@ -31,14 +31,6 @@ myLogin.run(function ($rootScope, $state, $location, UserFacebookID ) {
       UserFacebookID.scopeState = toState.name;
 
       console.log("step 3... jump to login  " +   UserFacebookID.scopeState);
-
-
-      ///// >>> emit
-      $rootScope.refreshProjectList = function(){
-        console.log("/////>>>> refreshProjectList in emit");
-        $scope.$emit('refreshProjectList', {});// res - your data
-      }
-
       $state.go("index");
       event.preventDefault();
 
@@ -146,6 +138,13 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
         if (response.status == 'connected') {
           $scope.logged = true;
           UserFacebookID.logged = true;
+
+          ///// >>> emit
+          $scope.refreshProjectList = function(){
+            console.log("/////>>>> refreshProjectList in emit");
+            $scope.$emit('refreshProjectList', {});// res - your data
+          }
+
           $scope.me();
           console.log("step 5... jumping to the previus state");
           if(UserFacebookID.scopeState != "index") {
