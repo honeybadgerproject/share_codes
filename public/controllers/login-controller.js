@@ -33,6 +33,10 @@ myLogin.run(function ($rootScope, $state, $location, UserFacebookID ) {
       $state.go("index");
       event.preventDefault();
 
+      ///// >>> emit
+      $scope.refreshProjectList = function(){
+                $scope.$emit('refreshProjectList', {});// res - your data
+      }
       return;
 
     }
@@ -76,7 +80,7 @@ myLogin.service('loginModal', function ($modal, $rootScope) {
 
 });
 
-myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebook, UserFacebookID, refreshProjectList) {
+myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebook, UserFacebookID) {
 
   console.log("heloo wombath codes - inside LoginCtrl");
     /******************** facebook login **************************/
@@ -161,7 +165,7 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
           //UserFacebookID.logged = true;
           console.log("1. send the current user to sever");
           console.log(UserFacebookID.user);
-          refreshProjectList.refreshProjectList();
+        //  refreshProjectList.refreshProjectList();
         });
       });
     };

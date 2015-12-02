@@ -1,5 +1,7 @@
 var myApp = angular.module('myApp',['ui.router', 'facebook', 'braintree-angular', 'ct.ui.router.extras', 'ui.bootstrap', 'ui.bootstrap.modal']);
 
+
+
 myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
 
   var myAppId = '901124496607649';
@@ -100,39 +102,12 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
 
 });
 
-
-myApp.service('refreshProjectList', function ($scope, $http, $modal, $rootScope, UserFacebookID) {
-
-  console.log("heloo wombath codes - inside refreshProjectListService");
-
-  this.refreshProjectList = function() {
-      console.log("UserFacebookID.logged:  " + UserFacebookID.logged );
-      if(UserFacebookID.logged == true) {
-        console.log("in user face id for projects");
-        console.log(UserFacebookID.user.id);
-
-        $http.get('/refreshProjectWithUser/' + UserFacebookID.user.id).success(function(response) {
-          console.log("refresh");
-          $scope.projectlist = response;
-          $scope.project = "";
-        });
-      }
-
-
-    };
-
-    //return refreshProjectList();
-
-});
-
-
-
-myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFacebookID, refreshProjectList) {
+myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFacebookID) {
 
     console.log("heloo wombath codes - inside AppCtrl");
 
     $scope.changeStyle1 = function() {
-      //$scope.
+
       console.log("change to class 1");
 
        $scope.wstyle = "style1";
@@ -151,7 +126,13 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
     };
 
 
-      /*var refreshProjectList = function() {
+    //// >> on for emit
+    $scope.$on('refreshProjectList', function () {
+      console.log("////>>>> called by emit " );
+      refreshProjectList();
+    });
+
+    var refreshProjectList = function() {
       console.log("UserFacebookID.logged:  " + UserFacebookID.logged );
       if(UserFacebookID.logged == true) {
         console.log("in user face id for projects");
@@ -165,9 +146,9 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
       }
 
 
-    }; */
+    };
 
-    refreshProjectList.refreshProjectList();
+    refreshProjectList();
 
 
     $scope.addnewproject = function(newproject) {
@@ -182,14 +163,14 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
 
       $http.post('/projectlist', newproject).success(function(response) {
         console.log(response);
-        refreshProjectList.refreshProjectList();
+      //  refreshProjectList.refreshProjectList();
       });
     };
 
     $scope.remove = function(id) {
       console.log(id);
       $http.delete('/projectlist/' + id).success(function(response) {
-        refreshProjectList.refreshProjectList();
+        //refreshProjectList.refreshProjectList();
       });
     };
 
@@ -214,7 +195,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
       console.log("new date " + $scope.project.project_last_update);
 
       $http.put('/projectlist/' + $scope.project._id, $scope.project).success(function(response) {
-        refreshProjectList.refreshProjectList();
+        //refreshProjectList.refreshProjectList();
       });
     };
 
