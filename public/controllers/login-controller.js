@@ -24,7 +24,7 @@ myLogin.run(function ($rootScope, $state, $location, UserFacebookID ) {
     " - requireLogin: " + toState.data.requireLogin + " - logged: " + UserFacebookID.logged);
 
     // NOT authenticated
-    if(toState.data.requireLogin == true && UserFacebookID.logged == false ) {
+    if(toState.data.requireLogin == true && UserFacebookID.logged == false) {
 
       console.log("step 2... save current state " + toState.name);
       UserFacebookID.scopeState = toState.name;
@@ -88,7 +88,7 @@ myLogin.service('loginModal', function ($modal, $rootScope) {
 
 });
 
-myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, event, Facebook, UserFacebookID) {
+myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebook, UserFacebookID) {
 
   console.log("heloo wombath codes - inside LoginCtrl");
     /******************** facebook login **************************/
@@ -198,7 +198,7 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, event,
           UserFacebookID.user = {};
           UserFacebookID.logged = false;
           $state.go("index");
-          event.preventDefault();
+        //  event.preventDefault();
         });
       });
     }

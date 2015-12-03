@@ -128,7 +128,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
 
     //// >> on for emit
     $scope.$on('refreshProjectList', function () {
-      console.log("////>>>> called by emit " );
+      console.log("////>> called by emit " );
       refreshProjectList();
     });
 
