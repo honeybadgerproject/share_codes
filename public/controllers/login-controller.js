@@ -4,7 +4,7 @@ myLogin.factory('UserFacebookID', function() {
     return {
         user: {} ,
         scopeState: 'index' ,
-        logged: 'false'
+        logged: false
     };
 });
 
@@ -17,15 +17,14 @@ myLogin.run(function ($rootScope, $state, $location, UserFacebookID ) {
   $rootScope.$on('$stateChangeStart', function (event, toState, fromState, toParams) {
     //var requireLogin = toState.data.requireLogin;
 
-    var requireLogin = toState.data.requireLogin && UserFacebookID.logged == 'false';
+  //  var requireLogin = toState.data.requireLogin && UserFacebookID.logged == 'false';
 
 
     console.log("step 1... about to authenticate - toState: " + toState.name +
-    " - requireLogin: " + toState.data.requireLogin + " - logged: " + UserFacebookID.logged +
-    " - requireLogin: " + requireLogin);
+    " - requireLogin: " + toState.data.requireLogin + " - logged: " + UserFacebookID.logged);
 
     // NOT authenticated
-    if(requireLogin) {
+    if(toState.data.requireLogin == true && UserFacebookID.logged == false ) {
 
       console.log("step 2... save current state " + toState.name);
       UserFacebookID.scopeState = toState.name;
@@ -89,7 +88,7 @@ myLogin.service('loginModal', function ($modal, $rootScope) {
 
 });
 
-myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebook, UserFacebookID) {
+myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, event, Facebook, UserFacebookID) {
 
   console.log("heloo wombath codes - inside LoginCtrl");
     /******************** facebook login **************************/
@@ -198,7 +197,8 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
           $scope.logged = false;
           UserFacebookID.user = {};
           UserFacebookID.logged = false;
-          $state.data.requireLogin = false;
+          $state.go("index");
+          event.preventDefault();
         });
       });
     }
