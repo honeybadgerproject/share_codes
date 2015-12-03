@@ -198,6 +198,7 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
           $scope.logged = false;
           UserFacebookID.user = {};
           UserFacebookID.logged = false;
+          $state.data.requireLogin = false;
         });
       });
     }
