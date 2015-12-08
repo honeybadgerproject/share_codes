@@ -90,24 +90,31 @@
          <a><h5>+ Add a new tab</h5></a>
        </div>
 
-       <!-- dialog 2 -->
-       <ul class="nav nav-tabs">
+       <!-- tab container -->
+       <div class="container">
 
-         <li ng-repeat="tab in tablist"><a data-toggle="tab" ng-click="edittab(tab._id)" href="{{'#tab' + $index}}">{{tab.tab_name}}</a></li>
-         <!--<li><a data-toggle="tab" href="#tab1">tab 1</a></li>-->
+        <div role="tabpanel" ng-controller="tabCtrl">
+          <ul class="etabs clearfix" role="tablist">
+            <li role="presentation" ng-repeat="tab in tablist" ng-click="selectTab($index)" ng-class="{'active':selectedTab == $index}">
+              <a data-target="#tab" aria-controls="home" role="tab" data-toggle="tab" ng-click="edittab(tab._id)">{{tab.tab_name}}<span ng-click="deleteTab($index)" class="glyphicon glyphicon-remove"></span></a>
+            </li>
+            <li role="presentation" ng-click="addTab()">
+                   <a aria-controls="home" role="tab" data-toggle="tab">( + )</a>
+            </li>
+            <!-- <a>  href="{{'#tab' + $index}}" </a>  <li><a data-toggle="tab" href="#tab1">tab 1</a></li>-->
+          </ul>
 
-       </ul>
-
-       <div class="tab-content">
-        <div ng-repeat="tab in tablist" id="{{'tab' + $index}}" class="tab-pane fade">
-          <textarea class="form-control"  rows="7" id="content" ng-model="tab.tab_content" >{{tab.tab_content}}</textarea>
-          <label>tab name:  </label><input type="text" value="{{tab.tab_name}}" ng-model="tab.tab_name" ><button ng-click="updatetab(tab)">save</button>
+          <div class="panel-container">
+            <div role="tabpanel" class="tab-pane active" id="tab" ng-repeat="tab in tablist">
+              <textarea class="form-control"  rows="7" id="content" ng-model="tab.tab_content" >{{tab.tab_content}}</textarea>
+              <label>tab name:  </label><input type="text" value="{{tab.tab_name}}" ng-model="tab.tab_name" ><button ng-click="updatetab(tab)">save</button>
+            </div>
+            <!--<div id="tab1" class="tab-pane fade">
+            <textarea class="form-control"  rows="7" id="content"></textarea>
+          </div>-->
+          </div>
         </div>
-        <!--<div id="tab1" class="tab-pane fade">
-          <textarea class="form-control"  rows="7" id="content"></textarea>
-        </div>-->
-
-    </div>
+      </div>
 </section>
 
   </div>

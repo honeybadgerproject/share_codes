@@ -216,6 +216,7 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
           $scope.logged = true;
           //UserFacebookID.user = {};
           UserFacebookID.logged = true;
+          refreshProjectList();
 
         });
       } else {

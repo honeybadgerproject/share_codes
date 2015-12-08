@@ -163,14 +163,14 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
 
       $http.post('/projectlist', newproject).success(function(response) {
         console.log(response);
-      //  refreshProjectList.refreshProjectList();
+        refreshProjectList();
       });
     };
 
     $scope.remove = function(id) {
       console.log(id);
       $http.delete('/projectlist/' + id).success(function(response) {
-        //refreshProjectList.refreshProjectList();
+        refreshProjectList();
       });
     };
 
@@ -195,7 +195,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
       console.log("new date " + $scope.project.project_last_update);
 
       $http.put('/projectlist/' + $scope.project._id, $scope.project).success(function(response) {
-        //refreshProjectList.refreshProjectList();
+        refreshProjectList();
       });
     };
 
