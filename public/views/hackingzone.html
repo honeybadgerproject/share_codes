@@ -87,7 +87,7 @@
        <div class="about-top-area">
          <hr class="special">
          <br>
-         <a><h5>+ Add a new tab</h5></a>
+         <a ng-click="addnewtab()"><h5>+ Add a new tab</h5></a>
        </div>
 
 
@@ -104,7 +104,7 @@
                 <a data-target="#tab" aria-controls="home" role="tab" data-toggle="tab" ng-click="edittab(tab._id)">{{tab.tab_name}}<span ng-click="deleteTab($index)" class="glyphicon glyphicon-remove"></span></a>
               </li>
               <li role="presentation" ng-click="addTab()">
-                   <a aria-controls="home" role="tab" data-toggle="tab">( + )</a>
+                   <a aria-controls="home" role="tab" data-toggle="tab" ng-click="addnewtab()">( + )</a>
               </li>
             <!-- <a>  href="{{'#tab' + $index}}" </a>  <li><a data-toggle="tab" href="#tab1">tab 1</a></li>-->
             </ul>
