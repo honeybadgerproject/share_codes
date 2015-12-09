@@ -94,7 +94,7 @@
       <!-- tab container -->
        <div class="container">
 
-        <div role="tabpanel" ng-controller="tabCtrl">
+        <div role="tabpanel">
           <!-- Start: Tab Area -->
          <div class="col-md-12 about-tab animated visible" data-animation="fadeInUp" data-animation-delay="400">
 
@@ -103,8 +103,8 @@
               <li role="presentation" ng-repeat="tab in tablist" ng-click="selectTab($index)" ng-class="{'active':selectedTab == $index}">
                 <a data-target="#tab" aria-controls="home" role="tab" data-toggle="tab" ng-click="edittab(tab._id)">{{tab.tab_name}}<span ng-click="deleteTab($index)" class="glyphicon glyphicon-remove"></span></a>
               </li>
-              <li role="presentation" ng-click="addTab()">
-                   <a aria-controls="home" role="tab" data-toggle="tab" ng-click="addnewtab()">( + )</a>
+              <li role="presentation" ng-click="addnewtab()">
+                   <a aria-controls="home" role="tab" data-toggle="tab" >( + )</a>
               </li>
             <!-- <a>  href="{{'#tab' + $index}}" </a>  <li><a data-toggle="tab" href="#tab1">tab 1</a></li>-->
             </ul>
