@@ -26,33 +26,19 @@
    <!-- =================================================
    Banner Area End -->
 
-<!-- About Area Start
-    ====================================================== -->
-<section class="about-main">
-  <div class="container">
-
-   <div role="tabpanel" ng-controller="tabCtrl">
-
-     <!-- Start: Tab Area -->
-    <div class="col-md-12 about-tab animated visible" data-animation="fadeInUp" data-animation-delay="400">
-      <div id="tab-container">
-
-          <ul class="etabs clearfix" role="tablist">
-				        <li role="presentation" ng-repeat="tab in tabs" ng-click="selectTab($index)" ng-class="{'active':selectedTab == $index}">
-					             <a data-target="#tab" aria-controls="home" role="tab" data-toggle="tab">Tab {{tab.id}} <span ng-click="deleteTab($index)" class="glyphicon glyphicon-remove"></span></a>
-				        </li>
-				        <li role="presentation" ng-click="addTab()">
-					             <a aria-controls="home" role="tab" data-toggle="tab">( + )</a>
-				        </li>
-		      </ul>
-			    <div class="panel-container">
-				        <div role="tabpanel" class="tab-pane active" id="tab">
-					             <h1>Tab {{tabs[selectedTab].id}}</h1>
-					              <h3>Content:- {{tabs[selectedTab].content}}</h3>
-				        </div>
-			    </div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
+   <!-- Style forms Area
+      ====================================================== -->
+   <section class="team-area-top text-center">
+     <div class="row">
+       <div class="container">
+          <div class="medium-txt animated visible" data-animation="fadeInUp" data-animation-delay="400">&quot; Choose a style for your project. &quot;</div>
+         <p>
+           <a href="views/stylesolid/solid.html#/page?proyect_title={{ proyect_title }}&proyect_scope={{proyect_scope}}&proyect_content={{proyect_content}}" class="btn btn-primary btn-large" target="_blank">Solid style</a>&nbsp;&nbsp;&nbsp;&nbsp;
+           <a href="#" class="btn btn-primary btn-large" target="_blank">Plain style</a>&nbsp;&nbsp;&nbsp;&nbsp;
+           <a href="#" class="btn btn-primary btn-large" target="_blank">Primary style</a>
+         </p>
+       </div>
+     </div>
+   </section>
+   <!-- =================================================
+   Style forms Area End -->
