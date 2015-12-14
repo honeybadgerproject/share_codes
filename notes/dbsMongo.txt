@@ -30,7 +30,8 @@ db.projectlist.find().pretty()
 "project_cost" : "0.00",
 "date_created" : "1-tuesday-2015",
 "last_update" : "1-tuesday-2015",
-"project_extras" : "----"
+"project_extras" : "----",
+"project.project_style" : "solid"
 }
 
  -user_owner:

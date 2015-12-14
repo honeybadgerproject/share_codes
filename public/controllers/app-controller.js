@@ -106,6 +106,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
 
     console.log("heloo wombath codes - inside AppCtrl");
 
+
     $scope.changeStyle1 = function() {
 
       console.log("change to class 1");
@@ -142,6 +143,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
           console.log("refresh");
           $scope.projectlist = response;
           $scope.project = "";
+          $scope.style_css = {item: ''};
         });
       }
 
