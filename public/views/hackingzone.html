@@ -98,10 +98,10 @@
           <!-- Start: Tab Area -->
          <div class="col-md-12 about-tab animated visible" data-animation="fadeInUp" data-animation-delay="400">
 
-          <div id="tab-container">
+          <div id="tab-container" ng-init="tabIndex = 1">
             <ul class="etabs clearfix" role="tablist">
-              <li role="presentation" ng-repeat="tab in tablist" ng-click="selectTab($index)" ng-class="{'active':selectedTab == $index}">
-                <a data-target="#tab" aria-controls="home" role="tab" data-toggle="tab" ng-click="edittab(tab._id)">{{tab.tab_name}}<span ng-click="deleteTab($index)" class="glyphicon glyphicon-remove"></span></a>
+              <li role="presentation" ng-repeat="tab in tablist" ng-class="{'active': tabIndex === $index}">
+                <a data-target="#tab" aria-controls="home" role="tab" data-toggle="tab" ng-click="tabIndex = {{$index}}">{{tab.tab_name}}<span ng-click="deleteTab($index)" class="glyphicon glyphicon-remove"></span></a>
               </li>
               <li role="presentation" ng-click="addnewtab()">
                    <a aria-controls="home" role="tab" data-toggle="tab" >( + )</a>
@@ -109,16 +109,13 @@
             <!-- <a>  href="{{'#tab' + $index}}" </a>  <li><a data-toggle="tab" href="#tab1">tab 1</a></li>-->
             </ul>
 
-          <div class="panel-container">
-            <div role="tabpanel" class="tab-pane active" id="tab" ng-repeat="tab in tablist">
-              <textarea class="form-control"  rows="7" id="content" ng-model="tab.tab_content" >{{tab.tab_content}}</textarea>
-              <label>tab name:  </label><input type="text" value="{{tab.tab_name}}" ng-model="tab.tab_name" ><button ng-click="updatetab(tab)">save</button>
+            <div class="panel-container">
+              <div  id="tab" role="tabpanel" class="tab-pane active" ng-repeat="tab in tablist" ng-show="tabIndex === {{$index}}">
+                <textarea class="form-control"  rows="7" id="content" ng-model="tab.tab_content" >{{tab.tab_content}}</textarea>
+                <label>tab name:  </label><input type="text" value="{{tab.tab_name}}" ng-model="tab.tab_name" ><button ng-click="updatetab(tab)">save</button>
+              </div>
             </div>
-            <!--<div id="tab1" class="tab-pane fade">
-            <textarea class="form-control"  rows="7" id="content"></textarea>
-          </div>-->
           </div>
-        </div>
         </div>
       </div>
     </div>
