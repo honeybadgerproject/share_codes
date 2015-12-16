@@ -9,6 +9,33 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
 
   $scope.modalInstance;
 
+  /* ----- tab controller ------*/
+
+  /** holds tabs, we will perform repeat on this **/
+  $scope.tabs = [{
+    id:1,
+    content:'This is a default tab on load'
+  }]
+
+  $scope.counter = 1;
+  /** Function to add a new tab **/
+  $scope.addTab = function(){
+    $scope.counter++;
+    $scope.tabs.push({id:$scope.counter,content:'Any Content'});
+    $scope.selectedTab = $scope.tabs.length - 1; //set the newly added tab active.
+  }
+
+  /** Function to delete a tab **/
+  $scope.deleteTab = function(index){
+    $scope.tabs.splice(index,1); //remove the object from the array based on index
+  }
+
+  $scope.selectedTab = 0; //set selected tab to the 1st by default.
+
+  /** Function to set selectedTab **/
+  $scope.selectTab = function(index){
+    $scope.selectedTab = index;
+  }
 
   /*---- resources ----*/
 
@@ -100,7 +127,7 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
     if(UserFacebookID.user.id) {
 
       $http.get('/tablistowner/' + UserFacebookID.user.id).success(function(response) {
-        console.log("refresh tab");
+        console.log("refresh");
         $scope.tablist = response;
         $scope.tab = "";
       });
@@ -110,18 +137,19 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
   refreshTabList();
 
 
-  $scope.addnewtab = function(newtab) {
-    console.log(newtab);
-    console.log($scope.tab);
-
+  $scope.addnewresource = function(newresource) {
+    console.log(newresource);
+    console.log($scope.resource);
     if(UserFacebookID.user.id) {
-      newtab.user_owner = UserFacebookID.user.id;
-      newtab.id_tab: '';
-      newtab.tab_name: '';
-      newtab.tab_content: '';
-      $http.post('/tablist', newtab).success(function(response) {
+
+      newresource.user_owner = UserFacebookID.user.id;
+      $http.post('/resourcelist', newresource).success(function(response) {
         console.log(response);
-        refreshTabList();
+        if($scope.modalInstance)
+        {
+          $scope.modalInstance.close();
+        }
+        refreshResourceList();
       });
     }
   };
