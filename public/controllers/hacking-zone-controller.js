@@ -143,9 +143,9 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
 
     if(UserFacebookID.user.id) {
       newtab.user_owner = UserFacebookID.user.id;
-      newtab.id_tab = '';
-      newtab.tab_name = '';
-      newtab.tab_content = '';
+      newtab.id_tab = "";
+      newtab.tab_name = "";
+      newtab.tab_content = "";
       $http.post('/tablist', newtab).success(function(response) {
         console.log(response);
         refreshTabList();
