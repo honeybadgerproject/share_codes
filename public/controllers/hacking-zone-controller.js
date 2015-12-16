@@ -137,19 +137,18 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
   refreshTabList();
 
 
-  $scope.addnewresource = function(newresource) {
-    console.log(newresource);
-    console.log($scope.resource);
-    if(UserFacebookID.user.id) {
+  $scope.addnewtab = function(newtab) {
+    console.log(newtab);
+    console.log($scope.tab);
 
-      newresource.user_owner = UserFacebookID.user.id;
-      $http.post('/resourcelist', newresource).success(function(response) {
+    if(UserFacebookID.user.id) {
+      newtab.user_owner = UserFacebookID.user.id;
+      newtab.id_tab = '';
+      newtab.tab_name = '';
+      newtab.tab_content = '';
+      $http.post('/tablist', newtab).success(function(response) {
         console.log(response);
-        if($scope.modalInstance)
-        {
-          $scope.modalInstance.close();
-        }
-        refreshResourceList();
+        refreshTabList();
       });
     }
   };
