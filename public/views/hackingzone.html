@@ -103,7 +103,7 @@
               <li role="presentation" ng-repeat="tabs in tablist" ng-class="{'active': tabIndex === $index}">
                 <a data-target="#tab" aria-controls="home" role="tab" data-toggle="tab" ng-click="tabIndex = {{$index}}">{{tab.tab_name}}<span ng-click="deleteTab($index)" class="glyphicon glyphicon-remove"></span></a>
               </li>
-              <li role="presentation" ng-click="addnewtab(tab)">
+              <li role="presentation" ng-click="addnewtab()">
                    <a aria-controls="home" role="tab" data-toggle="tab" >( + )</a>
               </li>
             <!-- <a>  href="{{'#tab' + $index}}" </a>  <li><a data-toggle="tab" href="#tab1">tab 1</a></li>-->
@@ -111,8 +111,8 @@
 
             <div class="panel-container">
               <div  id="tab" role="tabpanel" class="tab-pane active" ng-repeat="tabs in tablist" ng-show="tabIndex === {{$index}}">
-                <textarea class="form-control"  rows="7" id="content" ng-model="tab.tab_content" >{{tab.tab_content}}</textarea>
-                <label>tab name:  </label><input type="text" value="{{tab.tab_name}}" ng-model="tab.tab_name" ><button ng-click="updatetab(tab)">save</button>
+                <textarea class="form-control"  rows="7" id="content" ng-model="note.tab_content" >{{tab.tab_content}}</textarea>
+                <label>tab name:  </label><input type="text" value="{{note.tab_name}}" ng-model="note.tab_name" ><button ng-click="updatetab(tab)">save</button>
               </div>
             </div>
           </div>
