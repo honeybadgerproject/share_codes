@@ -99,9 +99,9 @@
          <div class="col-md-12 about-tab animated visible" data-animation="fadeInUp" data-animation-delay="400">
 
           <div id="tab-container" ng-init="tabIndex = 1">
-            <ul class="etabs clearfix" role="tablist">
-              <li role="presentation" ng-repeat="tabs in tablist" ng-class="{'active': tabIndex === $index}">
-                <a data-target="#tab" aria-controls="home" role="tab" data-toggle="tab" ng-click="tabIndex = {{$index}}">{{tab.tab_name}}<span ng-click="deleteTab($index)" class="glyphicon glyphicon-remove"></span></a>
+            <ul class="etabs clearfix">
+              <li ng-repeat="tabs in notelist" ng-class="{'active': tabIndex === $index}">
+                <a ng-click="tabIndex = {{$index}}">{{tabs.tab_name}}<span ng-click="deleteTab($index)" class="glyphicon glyphicon-remove"></span></a>
               </li>
               <li role="presentation" ng-click="addnewtab()">
                    <a aria-controls="home" role="tab" data-toggle="tab" >( + )</a>
@@ -110,9 +110,9 @@
             </ul>
 
             <div class="panel-container">
-              <div  id="tab" role="tabpanel" class="tab-pane active" ng-repeat="tabs in tablist" ng-show="tabIndex === {{$index}}">
-                <textarea class="form-control"  rows="7" id="content" ng-model="note.tab_content" >{{tab.tab_content}}</textarea>
-                <label>tab name:  </label><input type="text" value="{{note.tab_name}}" ng-model="note.tab_name" ><button ng-click="updatetab(tab)">save</button>
+              <div ng-repeat="tabs in notelist" class="tab-cont clearfix" ng-class="{'active': tabIndex === $index}" ng-show="tabIndex === {{$index}}">
+                <textarea class="form-control" rows="7" id="content" ng-model="note.tab_content" >{{tab.tab_content}}</textarea>
+                <label>tab name:  </label><input type="text" value="{{note.tab_name}}" ng-model="note.tab_name" ><button ng-click="updatetab(tabs)">save</button>
               </div>
             </div>
           </div>
