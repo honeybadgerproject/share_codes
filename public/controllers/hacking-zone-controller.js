@@ -145,10 +145,10 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
     if(UserFacebookID.user.id) {
 
       var newnote = {
-        newnote.user_owner: UserFacebookID.user.id,
-        newnote.id_tab: "note",
-        newnote.tab_name: "note",
-        newnote.tab_content = ""
+        user_owner: UserFacebookID.user.id,
+        id_tab: "note",
+        tab_name: "note",
+        tab_content = ""
       };
       console.log(newnote);
       $http.post('/notelist', newnote).success(function(response) {
