@@ -4,7 +4,7 @@ var mongojs = require('mongojs');
 var db = mongojs('projectlist', ['projectlist']);
 var dbctr = mongojs('contributorslist', ['contributorslist']);
 var dbsrc = mongojs('resourcelist', ['resourcelist']);
-var dbtab = mongojs('tablist', ['tablist']);
+var dbtab = mongojs('notelist', ['notelist']);
 var bodyParser = require('body-parser');
 
 var braintree = require('braintree');
@@ -128,45 +128,45 @@ app.delete('/resourcelist/:id', function(req, res) {
 
 /**** start tab section ****/
 
-app.get('/tablistowner/:id', function(req, res) {
+app.get('/notelistowner/:id', function(req, res) {
   console.log("request");
   var id = req.params.id;
 
-  dbtab.tablist.find( { "user_owner": id} , function(err, docs) {
+  dbtab.notelist.find( { "user_owner": id} , function(err, docs) {
     console.log(docs);
     res.json(docs);
   });
 });
 
-app.post('/tablist', function(req, res) {
+app.post('/notelist', function(req, res) {
   console.log(req.body);
-  dbtab.tablist.insert(req.body, function(err, doc) {
+  dbtab.notelist.insert(req.body, function(err, doc) {
     res.json(doc);
   });
 });
 
 
-app.delete('/tablist/:id', function(req, res) {
+app.delete('/notelist/:id', function(req, res) {
   var id = req.params.id;
   console.log(id);
-  dbtab.tablist.remove({_id: mongojs.ObjectId(id)}, function(err, doc) {
+  dbtab.notelist.remove({_id: mongojs.ObjectId(id)}, function(err, doc) {
     res.json(doc);
   });
 });
 
-app.get('/tablist/:id', function(req, res) {
+app.get('/notelist/:id', function(req, res) {
   var id = req.params.id;
   console.log(id);
   console.log("into server");
-  dbtab.tablist.findOne({_id: mongojs.ObjectId(id)}, function(err, doc) {
+  dbtab.notelist.findOne({_id: mongojs.ObjectId(id)}, function(err, doc) {
     res.json(doc);
   });
 });
 
-app.put('/tablist/:id', function(req, res) {
+app.put('/notelist/:id', function(req, res) {
   var id = req.params.id;
   console.log(req.body.tab_name);
-  dbtab.tablist.findAndModify({query: {_id: mongojs.ObjectId(id)},
+  dbtab.notelist.findAndModify({query: {_id: mongojs.ObjectId(id)},
     update: {$set: {user_owner: req.body.user_owner, id_tab: req.body.id_tab,
       tab_name: req.body.tab_name, tab_content: req.body.tab_content}},
     new: true}, function(err, doc) {

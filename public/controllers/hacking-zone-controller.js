@@ -3,7 +3,7 @@ var myHacking = angular.module('myApp');
 
 myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, UserFacebookID) {
 
-  $scope.items = ['item1', 'item2', 'item3'];
+  //$scope.items = ['item1', 'item2', 'item3'];
 
   $scope.animationsEnabled = true;
 
@@ -12,30 +12,30 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
   /* ----- tab controller ------*/
 
   /** holds tabs, we will perform repeat on this **/
-  $scope.tabs = [{
+  /*$scope.tabs = [{
     id:1,
     content:'This is a default tab on load'
   }]
 
-  $scope.counter = 1;
+  $scope.counter = 1;*/
   /** Function to add a new tab **/
-  $scope.addTab = function(){
+  /*$scope.addTab = function(){
     $scope.counter++;
     $scope.tabs.push({id:$scope.counter,content:'Any Content'});
     $scope.selectedTab = $scope.tabs.length - 1; //set the newly added tab active.
-  }
+  }*/
 
   /** Function to delete a tab **/
-  $scope.deleteTab = function(index){
+  /*$scope.deleteTab = function(index){
     $scope.tabs.splice(index,1); //remove the object from the array based on index
   }
 
   $scope.selectedTab = 0; //set selected tab to the 1st by default.
-
+*/
   /** Function to set selectedTab **/
-  $scope.selectTab = function(index){
+  /*$scope.selectTab = function(index){
     $scope.selectedTab = index;
-  }
+  }*/
 
   /*---- resources ----*/
 
@@ -121,18 +121,21 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
 
   /*---- tabs ----*/
 
-  var refreshTabList = function() {
+
+
+  var refreshNoteList = function() {
     if(UserFacebookID.user.id) {
 
-      $http.get('/tablistowner/' + UserFacebookID.user.id).success(function(response) {
+      $http.get('/notelistowner/' + UserFacebookID.user.id).success(function(response) {
         console.log("refresh tab");
-        $scope.tablist = response;
-        $scope.tab = "";
+        $scope.notelist = response;
+        console.log($scope.notelist);
+        $scope.note = "";
       });
     }
   };
 
-  refreshTabList();
+  refreshNoteList();
 
 
   $scope.addnewtab = function(newtab) {
@@ -141,21 +144,21 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
 
     if(UserFacebookID.user.id) {
       newtab.user_owner = UserFacebookID.user.id;
-      newtab.id_tab = "";
-      newtab.tab_name = "";
+      newtab.id_tab = "note";
+      newtab.tab_name = "note";
       newtab.tab_content = "";
       console.log(newtab);
-      $http.post('/tablist', newtab).success(function(response) {
+      $http.post('/notelist', newtab).success(function(response) {
         console.log(response);
-        refreshTabList();
+        refreshNoteList();
       });
     }
   };
 
   $scope.removetab = function(id) {
     console.log(id);
-    $http.delete('/tablist/' + id).success(function(response) {
-      refreshTabList();
+    $http.delete('/notelist/' + id).success(function(response) {
+      refreshNoteList();
     });
   };
 
@@ -164,8 +167,8 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
 
     console.log(id);
     console.log("into tab");
-    $http.get('/tablist/' + id).success(function(response) {
-      $scope.tab = response;
+    $http.get('/notelist/' + id).success(function(response) {
+      $scope.note = response;
     });
   };
 
@@ -175,7 +178,7 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
     console.log("end add this edit tab");
     console.log($scope.tab._id);
 
-    $http.put('/tablist/' + newtab._id, newtab).success(function(response) {
+    $http.put('/notelist/' + newtab._id, newtab).success(function(response) {
       refreshTabList();
     });
   };
