@@ -131,7 +131,7 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
   $scope.isSelected(checkTab) {
       console.log("check Tab: " + checkTab);
     return $scope.tabIndex === checkTab;
-  }
+  };
 
 
   var refreshNoteList = function() {
