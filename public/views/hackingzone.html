@@ -102,7 +102,7 @@
            <div class="col-md-2">
              <div id="tab-container">
                <ul class="nav nav-pills nav-stacked">
-                 <li ng-repeat="tabs in notelist" ng-class="{'active': tabIndex === $index}">
+                 <li ng-repeat="tabs in notelist" ng-class="{'active': isSelected($index)}">
                    <a ng-click="selectTab($index)">{{tabs.tab_name}}<span ng-click="removetab(tabs._id)">-</span></a>
                  </li>
               <!--   <li role="presentation" ng-click="addnewtab()">
@@ -114,7 +114,7 @@
           </div>
           <div class="col-md-10">
             <div class="panel-container">
-              <div ng-repeat="tabs in notelist" class="tab-cont clearfix" ng-class="{'active': tabIndex === $index}" ng-show="tabIndex === {{$index}}">
+              <div ng-repeat="tabs in notelist" class="tab-cont clearfix" ng-class="{'active': isSelected($index)}" ng-show="tabIndex === {{$index}}">
                 <textarea class="form-control" rows="7" id="content" ng-model="note.tab_content" >{{tab.tab_content}}</textarea>
                 <label>tab name:  </label><input type="text" value="{{note.tab_name}}" ng-model="note.tab_name" ><button ng-click="updatetab(tabs)">save</button>
               </div>
