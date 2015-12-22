@@ -100,7 +100,7 @@
          <div class="row">
            <div class="col-md-2">
              <div id="tab-container" ng-init="tabIndex = 1">
-               <ul class="etabs clearfix nav-stacked">
+               <ul class="etabs nav nav-pills nav-stacked">
                  <li ng-repeat="tabs in notelist" ng-class="{'active': tabIndex === $index}">
                    <a ng-click="tabIndex = {{$index}}">{{tabs.tab_name}}<span ng-click="removetab(tabs._id)">-</span></a>
                  </li>
