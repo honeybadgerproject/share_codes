@@ -89,6 +89,7 @@
          <br>
          <a ng-click="addnewtab()"><h5>+ Add a new tab</h5></a>
        </div>
+       <br>
 
 
       <!-- tab container -->
@@ -99,10 +100,10 @@
          <div class="col-md-12 about-tab animated visible" data-animation="fadeInUp" data-animation-delay="400">
          <div class="row">
            <div class="col-md-2">
-             <div id="tab-container" ng-init="tabIndex = 1">
+             <div id="tab-container">
                <ul class="nav nav-pills nav-stacked">
                  <li ng-repeat="tabs in notelist" ng-class="{'active': tabIndex === $index}">
-                   <a ng-click="tabIndex = {{$index}}">{{tabs.tab_name}}<span ng-click="removetab(tabs._id)">-</span></a>
+                   <a ng-click="selectTab($index)">{{tabs.tab_name}}<span ng-click="removetab(tabs._id)">-</span></a>
                  </li>
               <!--   <li role="presentation" ng-click="addnewtab()">
                    <a aria-controls="home" role="tab" data-toggle="tab" >( + )</a>
