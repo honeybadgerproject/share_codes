@@ -100,25 +100,25 @@
          <div class="row">
            <div class="col-md-2">
              <div id="tab-container" ng-init="tabIndex = 1">
-             <ul class="etabs clearfix">
-               <li ng-repeat="tabs in notelist" ng-class="{'active': tabIndex === $index}">
-                 <a ng-click="tabIndex = {{$index}}">{{tabs.tab_name}}<span ng-click="deleteTab($index)" class="glyphicon glyphicon-remove"></span></a>
-               </li>
-               <li role="presentation" ng-click="addnewtab()">
+               <ul class="etabs clearfix nav-stacked">
+                 <li ng-repeat="tabs in notelist" ng-class="{'active': tabIndex === $index}">
+                   <a ng-click="tabIndex = {{$index}}">{{tabs.tab_name}}<span ng-click="removetab(tabs._id)">-</span></a>
+                 </li>
+                 <li role="presentation" ng-click="addnewtab()">
                    <a aria-controls="home" role="tab" data-toggle="tab" >( + )</a>
-               </li>
+                 </li>
               <!-- <a>  href="{{'#tab' + $index}}" </a>  <li><a data-toggle="tab" href="#tab1">tab 1</a></li>-->
               </ul>
             </div>
-            <div class="col-md-10">
-              <div class="panel-container">
-                <div ng-repeat="tabs in notelist" class="tab-cont clearfix" ng-class="{'active': tabIndex === $index}" ng-show="tabIndex === {{$index}}">
-                  <textarea class="form-control" rows="7" id="content" ng-model="note.tab_content" >{{tab.tab_content}}</textarea>
-                  <label>tab name:  </label><input type="text" value="{{note.tab_name}}" ng-model="note.tab_name" ><button ng-click="updatetab(tabs)">save</button>
-                </div>
+          </div>
+          <div class="col-md-10">
+            <div class="panel-container">
+              <div ng-repeat="tabs in notelist" class="tab-cont clearfix" ng-class="{'active': tabIndex === $index}" ng-show="tabIndex === {{$index}}">
+                <textarea class="form-control" rows="7" id="content" ng-model="note.tab_content" >{{tab.tab_content}}</textarea>
+                <label>tab name:  </label><input type="text" value="{{note.tab_name}}" ng-model="note.tab_name" ><button ng-click="updatetab(tabs)">save</button>
               </div>
             </div>
-           </div>
+          </div>
          </div>
         </div>
       </div>
@@ -126,5 +126,4 @@
 </section>
 
   </div>
-</div>
 </div>
