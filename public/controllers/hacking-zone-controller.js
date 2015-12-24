@@ -190,7 +190,7 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
     console.log("add this edit tab");
     console.log(newtab);
     console.log("end add this edit tab");
-    console.log($scope.tab._id);
+    console.log($scope.newtab._id);
 
     $http.put('/notelist/' + newtab._id, newtab).success(function(response) {
       refreshTabList();
