@@ -35,14 +35,6 @@
            <div class="cont-area-inner">
              <div class="inner-rocket-img"><img src="img/rocket-inner.png" alt=""></div>
                <div class="heading-area">
-                 <div class="container clearfix">
-                  <!--  <div class="input-group col-md-8">
-                      <a ui-sref="newproject">+ Add a new project</a>
-                    </div>
-                    <div class="col-md-4">
-
-                    </div>-->
-                  </div>
                </div>
            </div>
 
@@ -59,47 +51,42 @@
 
 <div class="row container">
   <div class="col-md-6">
-    <h3><a ui-sref="newproject">+ Add a new project</a></h3>
+    <h6><a ui-sref="newproject">+ Add a new project</a></h6>
   </div>
   <div class="col-md-6">
     <!-- show the projects -->
     <div ng-repeat="project in projectlist">
-        <!-- project -->
-    <!-- Blog Area Start
-        ====================================================== -->
-        <section class="our-blog-home text-center">
-        	<div class="container clearfix">
-                <div class="blog-home-cont">
-                	<div class="heading-container visible" data-animation="fadeIn" data-animation-delay="200"><h4><i class="fa fa-bullhorn"></i> <i>{{project.project_title}}</i></h4></div>
-                    <ul class="blog-conts">
+      <!-- project -->
+      <!-- Blog Area Start
+      ====================================================== -->
+      <section class="our-blog-home text-center">
+        <div class="blog-home-cont">
+          <div class="heading-container visible" data-animation="fadeIn" data-animation-delay="200"><h4><i class="fa fa-bullhorn"></i> <i>{{project.project_title}}</i></h4></div>
+            <ul class="blog-conts">
 
-                    	<!-- Start: Blog 01 -->
-                    	<li class="animated visible" data-animation="fadeInUp" data-animation-delay="200">
-                        	<!--<div class="blog-date"><span>17</span>Dec</div>-->
-                            <div class="blog-texts">
-                            	<h5>{{project.project_overview}}</h5>
-                                <p class="blog-by">Posted By : Anju Droach in Web Designing</p>
-                                <div><span>Last update:<time>{{project.project_last_update | date:'medium'}}</time>  -  Created on:<time>{{project.project_created_on | date:'medium'}}</span></div>
-                                <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>-->
-                            </div>
-                        </li>
-                    	<!-- End: Blog 01 -->
-
-                    </ul>
-                    <!-- Start: View More Button -->
-                    <label for="s3">show: </label>
-                    <input type="checkbox" id="s3">
-                    <label>&nbsp;&nbsp;&nbsp;&nbsp;rate: &nbsp;</label>5
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="button" class="btn btn-primary btn-short" ng-click="edit(project._id)" ui-sref="saveproject">Edit</button>
-                    <button type="button" class="btn btn-primary btn-short" ng-click="remove(project._id)" >Delete</button>
-                    <button type="button" class="btn btn-primary btn-short" ng-click="edit(project._id)" ui-sref="hackingzone">Hacking Zone</button>
-                    <br><br>
-                    <div class="blog-view-more animated visible" data-animation="fadeIn" data-animation-delay="200"><a href="#" class="view-more" ng-click="edit(project._id)" ui-sref="preview">Preview</a></div>
-
-                    <!-- End: View More Button -->
+              <!-- Start: Blog 01 -->
+              <li class="animated visible" data-animation="fadeInUp" data-animation-delay="200">
+                <!--<div class="blog-date"><span>17</span>Dec</div>-->
+                <div class="blog-texts">
+                  <h5>{{project.project_overview}}</h5>
+                  <p class="blog-by">Posted By : Anju Droach in Web Designing</p>
+                  <div><span>Last update:<time>{{project.project_last_update | date:'medium'}}</time>  -  Created on:<time>{{project.project_created_on | date:'medium'}}</span></div>
                 </div>
-            </div>
+              </li>
+            	<!-- End: Blog 01 -->
+            </ul>
+            <!-- Start: View More Button -->
+            <label for="s3">show: </label>
+            <input type="checkbox" id="s3">
+            <label>&nbsp;&nbsp;&nbsp;&nbsp;rate: &nbsp;</label>5
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-primary btn-short" ng-click="edit(project._id)" ui-sref="saveproject">Edit</button>
+            <button type="button" class="btn btn-primary btn-short" ng-click="remove(project._id)" >Delete</button>
+            <button type="button" class="btn btn-primary btn-short" ng-click="edit(project._id)" ui-sref="hackingzone">Hacking Zone</button>
+            <br><br>
+            <div class="blog-view-more animated visible" data-animation="fadeIn" data-animation-delay="200"><a href="#" class="view-more" ng-click="edit(project._id)" ui-sref="preview">Preview</a></div>
+                <!-- End: View More Button -->
+          </div>
         </section>
         <!-- =================================================
         Blog Area End -->
