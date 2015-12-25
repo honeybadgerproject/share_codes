@@ -248,4 +248,4 @@ app.get('/search/:text', function(req, res) {
 });
 
 app.listen(80);
-console.log("Server running port 3000");
+console.log("Server running port 80");
