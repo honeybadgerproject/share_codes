@@ -38,12 +38,11 @@
     <h6>News</h6>
   </div>
   <div class="col-md-6">
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="search the project" id="search" ng-model="search.text_search">
-      <span class="input-group-btn">
-        <button type="button" class="btn btn-primary" ng-click="search()" ><label class="fa fa-search"></label></button>
-      </span>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="search the project" id="search" ng-model="search.text_search" aria-describedby="basic-addon2">
+      <span class="input-group-addon" id="basic-addon2"><label class="fa fa-search"></label></span>
     </div>
+
     <!-- search results -->
     <div ng-repeat="find in findresults">
       <div class="row">
