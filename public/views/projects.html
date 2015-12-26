@@ -54,6 +54,10 @@
     <!-- right side -->
     <h6><a ui-sref="newproject">+ Add a new project</a></h6>
     <br>
+    <button type="button" class="btn btn-primary btn-large button-project-section-width" ng-click="edit(project._id)" ui-sref="saveproject">Edit</button>
+    <br><br>
+    <button type="button" class="btn btn-primary btn-large button-project-section-width" ng-click="remove(project._id)" >Delete</button>
+
     <!-- Style forms Area
        ====================================================== -->
     <section>
@@ -81,10 +85,6 @@
         </nav>
       </div>
     </section> <!-- end of section for styles -->
-    <button type="button" class="btn btn-primary btn-large button-project-section-width" ng-click="edit(project._id)" ui-sref="saveproject">Edit</button>
-    <br><br>
-    <button type="button" class="btn btn-primary btn-large button-project-section-width" ng-click="remove(project._id)" >Delete</button>
-
   </div>
   <div class="col-md-6">
     <!-- show the projects -->
