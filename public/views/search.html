@@ -5,21 +5,8 @@
 
            <div class="cont-area-inner">
              <div class="inner-rocket-img"><img src="img/rocket-inner.png" alt=""></div>
-               <div class="heading-area">
-                 <div class="container clearfix">
-                    <div class="input-group col-md-8">
-                      <input type="text" class="form-control" placeholder="search" id="search" ng-model="search.text_search">
-                      <span class="input-group-btn">
-                        <button type="button" class="btn btn-primary" ng-click="search()" ><label class="fa fa-search"></label></button>
-                      </span>
-                    </div>
-                    <div class="col-md-4">
-                           <!--<ul class="breadcrumbs-inner">
-                               <li class="active"><a href="index.html">Home</a></li>
-                               <li>About Us</li>-->
-                    </div>
-                   </div>
-               </div>
+             <div class="heading-area">
+              </div>
            </div>
 
            <!-- Start: Banner Bottom -->
@@ -46,71 +33,83 @@
   </form>
 </div>-->
 
-<!-- search results -->
-<div ng-repeat="find in findresults">
-  <div class="row">
-    <div class="col-lg-8 col-md-8">
-      <!-- Blog Area Start
-          ====================================================== -->
-          <section class="our-blog-home text-center">
-          	<div class="container clearfix">
-                  <div class="blog-home-cont">
-                  	<div class="heading-container visible" data-animation="fadeIn" data-animation-delay="200"><h4><i class="fa fa-bullhorn"></i> <i>{{find.project_title}}</i></h4></div>
-                      <ul class="blog-conts">
+<div class="row">
+  <div class="col-md-6">
+    <h6>News</h6>
+  </div>
+  <div class="col-md-6">
+    <input type="text" class="form-control" placeholder="search the project" id="search" ng-model="search.text_search">
+    <span class="input-group-btn">
+       <button type="button" class="btn btn-primary" ng-click="search()" ><label class="fa fa-search"></label></button>
+    </span>
+    <!-- search results -->
+    <div ng-repeat="find in findresults">
+      <div class="row">
+        <div class="col-lg-8 col-md-8">
+          <!-- Blog Area Start
+              ====================================================== -->
+              <section class="our-blog-home text-center">
+              	<div class="container clearfix">
+                      <div class="blog-home-cont">
+                      	<div class="heading-container visible" data-animation="fadeIn" data-animation-delay="200"><h4><i class="fa fa-bullhorn"></i> <i>{{find.project_title}}</i></h4></div>
+                          <ul class="blog-conts">
 
-                      	<!-- Start: Blog 01 -->
-                      	<li class="animated visible" data-animation="fadeInUp" data-animation-delay="200">
-                          	<!--<div class="blog-date"><span>17</span>Dec</div>-->
-                              <div class="blog-texts">
-                              	<h5>{{find.project_overview}}</h5>
-                                  <p class="blog-by">Posted By : Anju Droach in Web Designing</p>
-                                  <div><span>Last update:<time>{{find.project_last_update | date:'medium'}}</time>  -  Created on:<time>{{find.project_created_on | date:'medium'}}</span></div>
-                                  <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>-->
-                                  <p>rate: {{find.rate}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <div class="dropdown">
-                                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Collaborators
-                                        <span class="caret"></span>
-                                      </button>
-                                      <ul class="dropdown-menu">
-                                        <li><a href="#">Collaborator 1</a></li>
-                                        <li><a href="#">Collaborator 2</a></li>
-                                      </ul>
-                                    </div>
-                                  </p>
-                              </div>
-                          </li>
-                      	<!-- End: Blog 01 -->
+                          	<!-- Start: Blog 01 -->
+                          	<li class="animated visible" data-animation="fadeInUp" data-animation-delay="200">
+                              	<!--<div class="blog-date"><span>17</span>Dec</div>-->
+                                  <div class="blog-texts">
+                                  	<h5>{{find.project_overview}}</h5>
+                                      <p class="blog-by">Posted By : Anju Droach in Web Designing</p>
+                                      <div><span>Last update:<time>{{find.project_last_update | date:'medium'}}</time>  -  Created on:<time>{{find.project_created_on | date:'medium'}}</span></div>
+                                      <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>-->
+                                      <p>rate: {{find.rate}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <div class="dropdown">
+                                          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Collaborators
+                                            <span class="caret"></span>
+                                          </button>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="#">Collaborator 1</a></li>
+                                            <li><a href="#">Collaborator 2</a></li>
+                                          </ul>
+                                        </div>
+                                      </p>
+                                  </div>
+                              </li>
+                          	<!-- End: Blog 01 -->
 
-                      </ul>
-                      <!-- Start: View More Button -->
+                          </ul>
+                          <!-- Start: View More Button -->
 
-                      <div class="blog-view-more animated visible" data-animation="fadeIn" data-animation-delay="200"><a href="#" class="view-more">buy $</a></div>
+                          <div class="blog-view-more animated visible" data-animation="fadeIn" data-animation-delay="200"><a href="#" class="view-more">buy $</a></div>
 
-                      <!-- End: View More Button -->
+                          <!-- End: View More Button -->
+                      </div>
                   </div>
-              </div>
-          </section>
-          <!-- =================================================
-          Blog Area End -->
+              </section>
+              <!-- =================================================
+              Blog Area End -->
 
-<!--
-             <article class="card__article">
-                   <h3>{{find.project_title}}</h3> <a ng-click="edit(find._id)" ui-sref="viewproject">View</a>
-                   <h4>{{find.project_overview}}</h4>
-                   <h4>rate: {{rate}}</h4>
-                   <div class="dropdown">
-                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Collaborators
-                       <span class="caret"></span>
-                     </button>
-                     <ul class="dropdown-menu">
-                       <li><a href="#">Collaborator 1</a></li>
-                       <li><a href="#">Collaborator 2</a></li>
-                     </ul>
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     <input type="button" value="buy $" ui-sref="pay">
-                   </div>
-              </article>-->
+    <!--
+                 <article class="card__article">
+                       <h3>{{find.project_title}}</h3> <a ng-click="edit(find._id)" ui-sref="viewproject">View</a>
+                       <h4>{{find.project_overview}}</h4>
+                       <h4>rate: {{rate}}</h4>
+                       <div class="dropdown">
+                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Collaborators
+                           <span class="caret"></span>
+                         </button>
+                         <ul class="dropdown-menu">
+                           <li><a href="#">Collaborator 1</a></li>
+                           <li><a href="#">Collaborator 2</a></li>
+                         </ul>
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         <input type="button" value="buy $" ui-sref="pay">
+                       </div>
+                  </article>-->
 
+        </div>
+      </div>
     </div>
+
   </div>
 </div>
