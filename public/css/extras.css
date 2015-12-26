@@ -1,3 +1,6 @@
 .add-project-section {
-  margin-left:30px
+  padding-left:50px;
+}
+.button-project-section-width {
+  width: 100px;
 }
