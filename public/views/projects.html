@@ -53,7 +53,36 @@
   <div class="col-md-6 add-project-section">
     <!-- right side -->
     <h6><a ui-sref="newproject">+ Add a new project</a></h6>
-    <br><br>
+    <br>
+    <!-- Style forms Area
+       ====================================================== -->
+    <section class="text-center">
+      <div class="row">
+        <div class="container">
+           <div class="medium-txt animated visible" data-animation="fadeInUp" data-animation-delay="400">&quot; Choose a style for your project. &quot;</div>
+        </div>
+        <br>
+        <nav class="nav-main text-center">
+          <ul class="menu-cont">
+            <li  data-ng-click="style_css.item = 'solid'">
+              <a ng-model="project.project_style" ng-vale="solid" data-ng-class="{'active' : style_css.item == 'solid'}"
+                href="views/stylesolid/solid.html#/page?proyect_title={{project.project_title}}&proyect_overview={{project.project_overview}}&proyect_content={{project.project_content}}&project.project_price={{project.project_cost}}&proyect_collaborators={{ proyect_collaborators }}"
+                class="btn btn-primary btn-large" target="_blank">Solid style</a>
+            </li>
+            <li data-ng-click="style_css.item = 'plain'">
+              <a ng-model="project.project_style" ng-vale="plain" data-ng-class="{'active' : style_css.item == 'plain'}"
+                href="views/styleplain/plain.html#/page?proyect_title={{project.project_title}}&proyect_overview={{project.project_overview}}&proyect_content={{project.project_content}}&project.project_price={{project.project_cost}}&proyect_collaborators={{ proyect_collaborators }}"
+                class="btn btn-primary btn-large" target="_blank">Plain style</a>
+            </li>
+            <li data-ng-click="style_css.item = 'primary'">
+              <a ng-model="project.project_style" ng-vale="primary" data-ng-class="{'active' : style_css.item == 'primary'}"
+                href="views/styleprimary/primary.html#/page?proyect_title={{project.project_title}}&proyect_overview={{project.project_overview}}&proyect_content={{project.project_content}}&project.project_price={{project.project_cost}}&proyect_collaborators={{ proyect_collaborators }}"
+                class="btn btn-primary btn-large" target="_blank">Primary style</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </section> <!-- end of section for styles -->
     <button type="button" class="btn btn-primary btn-large button-project-section-width" ng-click="edit(project._id)" ui-sref="saveproject">Edit</button>
     <br><br>
     <button type="button" class="btn btn-primary btn-large button-project-section-width" ng-click="remove(project._id)" >Delete</button>
