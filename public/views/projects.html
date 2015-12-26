@@ -51,7 +51,13 @@
 
 <div class="row container">
   <div class="col-md-6">
+    <!-- right side -->
     <h6><a ui-sref="newproject">+ Add a new project</a></h6>
+    <br>
+    <button type="button" class="btn btn-primary btn-short" ng-click="edit(project._id)" ui-sref="saveproject">Edit</button>
+    <br>
+    <button type="button" class="btn btn-primary btn-short" ng-click="remove(project._id)" >Delete</button>
+
   </div>
   <div class="col-md-6">
     <!-- show the projects -->
@@ -80,11 +86,8 @@
             <input type="checkbox" id="s3">
             <label>&nbsp;&nbsp;&nbsp;&nbsp;rate: &nbsp;</label>5
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" class="btn btn-primary btn-short" ng-click="edit(project._id)" ui-sref="saveproject">Edit</button>
-            <button type="button" class="btn btn-primary btn-short" ng-click="remove(project._id)" >Delete</button>
-            <button type="button" class="btn btn-primary btn-short" ng-click="edit(project._id)" ui-sref="hackingzone">Hacking Zone</button>
             <br><br>
-            <div class="blog-view-more animated visible" data-animation="fadeIn" data-animation-delay="200"><a href="#" class="view-more" ng-click="edit(project._id)" ui-sref="preview">Preview</a></div>
+            <div class="blog-view-more animated visible" data-animation="fadeIn" data-animation-delay="200"><a href="#" class="view-more" ng-click="edit(project._id)" ui-sref="hackingzone">Preview</a></div>
                 <!-- End: View More Button -->
           </div>
         </section>

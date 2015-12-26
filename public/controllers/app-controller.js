@@ -144,7 +144,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
           $scope.projectlist = response;
           $scope.project = "";
           $scope.style_css = {item: ''};
-          console.log($scopelist);
+          if($scopelist != null) console.log($scopelist);
         });
       }
 
