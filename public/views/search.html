@@ -33,15 +33,17 @@
   </form>
 </div>-->
 
-<div class="row">
+<div class="row container">
   <div class="col-md-6">
     <h6>News</h6>
   </div>
   <div class="col-md-6">
-    <input type="text" class="form-control" placeholder="search the project" id="search" ng-model="search.text_search">
-    <span class="input-group-btn">
-       <button type="button" class="btn btn-primary" ng-click="search()" ><label class="fa fa-search"></label></button>
-    </span>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="search the project" id="search" ng-model="search.text_search">
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-primary" ng-click="search()" ><label class="fa fa-search"></label></button>
+      </span>
+    </div>
     <!-- search results -->
     <div ng-repeat="find in findresults">
       <div class="row">
