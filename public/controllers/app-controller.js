@@ -127,11 +127,17 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
     };
 
 
+
     //// >> on for emit
     $scope.$on('refreshProjectList', function () {
       console.log("////>> called by emit " );
       refreshProjectList();
     });
+
+    $scope.refreshProjectListHtml = function() {
+      console.log("refresh projectlist:  " + UserFacebookID.logged );
+      refreshProjectList();
+    };
 
     var refreshProjectList = function() {
       console.log("UserFacebookID.logged:  " + UserFacebookID.logged );
