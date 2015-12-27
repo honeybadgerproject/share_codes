@@ -44,7 +44,7 @@ myLogin.run(function ($rootScope, $state, $location, UserFacebookID ) {
       console.log("step 1,3... jump to login  " +   UserFacebookID.scopeState);
       //$state.go("index");
       //event.preventDefault();
-
+      refreshProjectList();
       return;
     }
 
