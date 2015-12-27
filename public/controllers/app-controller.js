@@ -157,7 +157,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
 
     };
 
-    refreshProjectList();
+  //  refreshProjectList();
 
 
     $scope.addnewproject = function(newproject) {

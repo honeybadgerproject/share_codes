@@ -136,11 +136,29 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
        }
     };
 
+    var IntentLoginHTML = funtion(){
+      console.log("step 4... starting the facebook login");
+      Facebook.login(function(response) {
+        if (response.status == 'connected') {
+          $scope.logged = true;
+          UserFacebookID.logged = true;
+
+          $scope.me();
+
+          console.log("step 5... jumping to the previus state");
+          if(UserFacebookID.scopeState != "index") {
+            $state.go(UserFacebookID.scopeState);
+          }
+        }
+
+      });
+    };
+
     ///// >>> emit
      var refreshProjectList = function(){
       console.log("/////>>>> refreshProjectList in emit");
       $scope.$emit('refreshProjectList', {});// res - your data
-    }
+    };
 
     ///
     /// Login
@@ -200,7 +218,7 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
         //  event.preventDefault();
         });
       });
-    }
+    };
 
     ///
     /// Taking approach of Events :D
