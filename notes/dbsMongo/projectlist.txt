@@ -1,0 +1,18 @@
+db.projectlist.find().pretty()
+{
+"_id" : ObjectId("55e61e9abe8df755630deead"),
+"user_owner" : "10206398373092349",
+"user_name" : "yabin.perez",
+"project_title" : "project1",
+"project_overview" : "honey badger its something",
+"project_content" : "contenido",
+"project_private" : "urls",
+"project_show" : "no",
+"project_cost" : "0.00",
+"date_created" : "1-tuesday-2015",
+"last_updated" : "1-tuesday-2015",
+"project_extras" : "----",     //>> modyfied
+"project_style" : "solid",
+"project_tragets" : "{ 'goal1' , 'goal2' }" ,
+"project_type" : "1"
+}

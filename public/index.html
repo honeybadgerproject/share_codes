@@ -49,7 +49,8 @@
               <ul class="menu-cont">
                 <li><a ui-sref="projects">Dashboard</a></li>
                 <li><a ui-sref="search">Search</a></li>
-                <li><a href="views/help/help.html">Help</a></li>
+                <li><a ui-sref="profile">Profile</a></li>
+                <li><a href="views/help/help.html" target="_blank">Help</a></li>
                 <li>
                   <div ng-controller="loginCtrl">
                     <button type="button" class="btn btn-primary btn-large" data-ng-show="!logged" data-ng-disabled="!facebookReady" data-ng-click="IntentLogin()">Login with Facebook</button>
