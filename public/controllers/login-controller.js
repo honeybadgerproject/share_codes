@@ -136,7 +136,7 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
        }
     };
 
-    var IntentLoginHTML = funtion(){
+    var IntentLoginHTML = function(){
       console.log("step 4... starting the facebook login");
       Facebook.login(function(response) {
         if (response.status == 'connected') {
