@@ -227,7 +227,8 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, $cooki
           $scope.user   = {};
           $scope.logged = false;
           UserFacebookID.user = {};
-          UserFacebookID.cache.removeAll();
+          // Removing a cookie
+          $cookieStore.remove('myFavorite');
           UserFacebookID.logged = false;
           $state.go("index");
         //  event.preventDefault();
