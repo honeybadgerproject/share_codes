@@ -102,7 +102,7 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
 
 });
 
-myApp.controller('AppCtrl', function($scope, $http, $timeout, $cacheFactory, Facebook, UserFacebookID) {
+myApp.controller('AppCtrl', function($scope, $http, $timeout, $cookies, $cookieStore, $window, Facebook, UserFacebookID) {
 
 
     console.log("heloo wombath codes - inside AppCtrl");
