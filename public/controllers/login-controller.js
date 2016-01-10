@@ -90,7 +90,7 @@ myLogin.service('loginModal', function ($modal, $rootScope) {
 myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, $cookies, $cookieStore, $window, Facebook, UserFacebookID) {
 
   console.log("heloo wombath codes - inside LoginCtrl");
-  
+
 
 
     // Define user empty data :/
@@ -222,6 +222,7 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, $cooki
           // Removing a cookie
           $cookieStore.remove('myFavorite');
           UserFacebookID.logged = false;
+          userIsConnected = false;
           $state.go("index");
         //  event.preventDefault();
         });
