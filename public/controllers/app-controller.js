@@ -104,6 +104,10 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
 
 myApp.controller('AppCtrl', function($scope, $http, $timeout, $cacheFactory, Facebook, UserFacebookID) {
 
+    /******************** cache Id *************************/
+    $scope.keys = [];
+    $scope.cache = $cacheFactory('cacheId');
+
     console.log("heloo wombath codes - inside AppCtrl");
 
 
