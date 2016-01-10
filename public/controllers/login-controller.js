@@ -87,9 +87,13 @@ myLogin.service('loginModal', function ($modal, $rootScope) {
 
 });
 
-myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebook, UserFacebookID) {
+myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, $cacheFactory, Facebook, UserFacebookID) {
 
   console.log("heloo wombath codes - inside LoginCtrl");
+    /******************** cache Id *************************/
+    $scope.keys = [];
+    $scope.cache = $cacheFactory('cacheId');
+
     /******************** facebook login **************************/
 
 
@@ -195,6 +199,12 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
         $scope.$apply(function() {
           $scope.user = response;
           UserFacebookID.user = response;
+          /* cache the user */
+          console.log("cache >> step 1... adding the user info to cache");
+          if (angular.isUndefined($scope.cache.get('userCached'))) {
+            $scope.keys.push('userCached');
+          }
+          $scope.cache.put('userCached', angular.isUndefined(response) ? null : response);
           //UserFacebookID.logged = true;
           console.log("1. send the current user to sever");
           console.log(UserFacebookID.user);
@@ -213,6 +223,7 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, Facebo
           $scope.user   = {};
           $scope.logged = false;
           UserFacebookID.user = {};
+          $scope.cache.removeAll();
           UserFacebookID.logged = false;
           $state.go("index");
         //  event.preventDefault();

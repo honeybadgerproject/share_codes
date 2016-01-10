@@ -102,7 +102,7 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
 
 });
 
-myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFacebookID) {
+myApp.controller('AppCtrl', function($scope, $http, $timeout, $cacheFactory, Facebook, UserFacebookID) {
 
     console.log("heloo wombath codes - inside AppCtrl");
 
@@ -143,6 +143,9 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, Facebook, UserFace
       console.log("UserFacebookID.logged:  " + UserFacebookID.logged );
       if(UserFacebookID.logged == true) {
         console.log("in user face id for projects");
+
+        UserFacebookID.user = $scope.cache.get('userCached');
+
         console.log(UserFacebookID.user.id);
 
         $http.get('/refreshProjectWithUser/' + UserFacebookID.user.id).success(function(response) {
