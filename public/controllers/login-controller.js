@@ -206,6 +206,7 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, $cache
           }
           $scope.cache.put('userCached', angular.isUndefined(response) ? null : response);
           console.log("cache >> step 2  cached key: userCached , value: " + $scope.cache.get('userCached') );
+            console.log($scope.cache.get('userCached'));
           //UserFacebookID.logged = true;
           console.log("1. send the current user to sever");
           console.log(UserFacebookID.user);
