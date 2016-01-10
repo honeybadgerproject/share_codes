@@ -145,14 +145,22 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cacheFactory, Fac
         console.log("in user face id for projects");
 
 
-      /*  if (angular.isUndefined($scope.cache.get('userCached'))) {
+        /* cache the user */
+        console.log("cache >> step 3... adding the user info to cache");
+        if (angular.isUndefined($scope.cache.get('userCached'))) {
           $scope.keys.push('userCached');
-          $scope.cache.put('userCached', angular.isUndefined(response) ? null : response);
-        }*/
+          $scope.cache.put('userCached', UserFacebookID.user);
+          console.log("cache >> step 4  cached key: userCached , value: " + $scope.cache.get('userCached') );
+          console.log($scope.cache.get('userCached'));
+        }
+        else {
+          console.log("cache >> step 5  cached key: userCached , value: " + $scope.cache.get('userCached') );
+          UserFacebookID.user = $scope.cache.get('userCached');
+          console.log(UserFacebookID.user);
+        }
 
-        console.log("cache >> step 3  cached key: userCached , value: " + $scope.cache.get('userCached') );
-        UserFacebookID.user = $scope.cache.get('userCached');
-        console.log(UserFacebookID.user.id);
+
+
 
         $http.get('/refreshProjectWithUser/' + UserFacebookID.user.id).success(function(response) {
           console.log("refresh");
