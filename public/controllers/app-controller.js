@@ -156,6 +156,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cacheFactory, Fac
 
         // Get cookie
         UserFacebookID.user = $cookieStore.get('userCached');
+        console.log(UserFacebookID.user);
 
 
 
