@@ -144,7 +144,11 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cacheFactory, Fac
       if(UserFacebookID.logged == true) {
         console.log("in user face id for projects");
 
-        UserFacebookID.user = $scope.cache.get('userCached');
+
+        if (!angular.isUndefined($scope.cache.get('userCached'))) {
+          UserFacebookID.user = $scope.cache.get('userCached');
+          console.log("cache >> step 3  UserFacebookID.user : " + $scope.cache.get('userCached') );
+        }
 
         console.log(UserFacebookID.user.id);
 
