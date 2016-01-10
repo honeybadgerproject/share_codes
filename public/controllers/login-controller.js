@@ -204,7 +204,7 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, $cache
           if (angular.isUndefined($scope.cache.get('userCached'))) {
             $scope.keys.push('userCached');
           }
-          $scope.cache.put('userCached', angular.isUndefined(response) ? null : response);
+          $scope.cache.put('userCached', response);
           console.log("cache >> step 2  cached key: userCached , value: " + $scope.cache.get('userCached') );
             console.log($scope.cache.get('userCached'));
           //UserFacebookID.logged = true;
