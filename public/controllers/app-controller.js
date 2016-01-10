@@ -105,8 +105,8 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
 myApp.controller('AppCtrl', function($scope, $http, $timeout, $cacheFactory, Facebook, UserFacebookID) {
 
     /******************** cache Id *************************/
-    $scope.keys = [];
-    $scope.cache = $cacheFactory('cacheId');
+    //$scope.keys = [];
+    //$scope.cache = $cacheFactory('cacheId');
     /****************************/
 
     console.log("heloo wombath codes - inside AppCtrl");
@@ -152,18 +152,17 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cacheFactory, Fac
 
         /* cache the user */
         console.log("cache >> step 3... adding the user info to cache");
-        if (angular.isUndefined($scope.cache.get('userCached'))) {
-          $scope.keys.push('userCached');
-          $scope.cache.put('userCached', UserFacebookID.user);
-          console.log("cache >> step 4  cached key: userCached , value: " + $scope.cache.get('userCached') );
-          console.log($scope.cache.get('userCached'));
+        if (angular.isUndefined(UserFacebookID.cache.get('userCached'))) {
+          UserFacebookID.keys.push('userCached');
+          UserFacebookID.put('userCached', UserFacebookID.user);
+          console.log("cache >> step 4  cached key: userCached , value: " + UserFacebookID.cache.get('userCached') );
+          console.log(UserFacebookID.cache.get('userCached'));
         }
         else {
-          console.log("cache >> step 5  cached key: userCached , value: " + $scope.cache.get('userCached') );
-          UserFacebookID.user = $scope.cache.get('userCached');
+          console.log("cache >> step 5  cached key: userCached , value: " + UserFacebookID.cache.get('userCached') );
+          UserFacebookID.user = UserFacebookID.cache.get('userCached');
           console.log(UserFacebookID.user);
         }
-
 
 
 
