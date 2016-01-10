@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp',['ui.router', 'facebook', 'braintree-angular', 'ct.ui.router.extras', 'ui.bootstrap', 'ui.bootstrap.modal']);
+var myApp = angular.module('myApp',['ui.router', 'facebook', 'braintree-angular', 'ct.ui.router.extras', 'ui.bootstrap', 'ui.bootstrap.modal', 'ngCookies']);
 
 
 
@@ -104,10 +104,6 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
 
 myApp.controller('AppCtrl', function($scope, $http, $timeout, $cacheFactory, Facebook, UserFacebookID) {
 
-    /******************** cache Id *************************/
-    //$scope.keys = [];
-    //$scope.cache = $cacheFactory('cacheId');
-    /****************************/
 
     console.log("heloo wombath codes - inside AppCtrl");
 
@@ -158,9 +154,8 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cacheFactory, Fac
           console.log(UserFacebookID.user);
         }*/
 
-        console.log("cache >> step 5  cached key: userCached , value: " + UserFacebookID.cache.get('userCached') );
-        UserFacebookID.user = UserFacebookID.cache.get('userCached');
-        console.log(UserFacebookID.user);
+        // Get cookie
+        UserFacebookID.user = $cookieStore.get('userCached');
 
 
 

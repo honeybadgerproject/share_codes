@@ -4,9 +4,7 @@ myLogin.factory('UserFacebookID', function() {
     return {
         user: {} ,
         scopeState: 'index' ,
-        logged: false,
-        keys: [],
-        cache: {}
+        logged: false
     };
 });
 
@@ -89,7 +87,7 @@ myLogin.service('loginModal', function ($modal, $rootScope) {
 
 });
 
-myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, $cacheFactory, Facebook, UserFacebookID) {
+myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, $cookieStore, Facebook, UserFacebookID) {
 
   console.log("heloo wombath codes - inside LoginCtrl");
     /******************** cache Id *************************/
@@ -202,13 +200,15 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, $cache
           $scope.user = response;
           UserFacebookID.user = response;
           /* cache the user */
-          console.log("cache >> step 1... adding the user info to cache");
-          if (angular.isUndefined(UserFacebookID.cache.get('userCached'))) {
+          console.log("cookie >> step 1... adding the user info to cookie");
+          // Put cookie
+          $cookieStore.put('userCached', response);
+          /*if (angular.isUndefined(UserFacebookID.cache.get('userCached'))) {
             UserFacebookID.keys.push('userCached');
           }
           UserFacebookID.cache.put('userCached', response);
           console.log("cache >> step 2  cached key: userCached , value: " + UserFacebookID.cache.get('userCached') );
-            console.log(UserFacebookID.cache.get('userCached'));
+            console.log(UserFacebookID.cache.get('userCached'));*/
           //UserFacebookID.logged = true;
           console.log("1. send the current user to sever");
           console.log(UserFacebookID.user);
@@ -244,6 +244,7 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, $cache
         $scope.$apply(function() {
           $scope.salutation = true;
           $scope.byebye     = false;
+
           //$scope.user   = {};
           $scope.logged = true;
           //UserFacebookID.user = {};
