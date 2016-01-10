@@ -107,6 +107,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cacheFactory, Fac
     /******************** cache Id *************************/
     $scope.keys = [];
     $scope.cache = $cacheFactory('cacheId');
+    /****************************/
 
     console.log("heloo wombath codes - inside AppCtrl");
 

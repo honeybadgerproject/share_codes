@@ -91,8 +91,8 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, $cache
 
   console.log("heloo wombath codes - inside LoginCtrl");
     /******************** cache Id *************************/
-    $scope.keys = [];
-    $scope.cache = $cacheFactory('cacheId');
+  //  $scope.keys = [];
+  //  $scope.cache = $cacheFactory('cacheId');
 
     /******************** facebook login **************************/
 
@@ -200,13 +200,13 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, $cache
           $scope.user = response;
           UserFacebookID.user = response;
           /* cache the user */
-          console.log("cache >> step 1... adding the user info to cache");
+      /*    console.log("cache >> step 1... adding the user info to cache");
           if (angular.isUndefined($scope.cache.get('userCached'))) {
             $scope.keys.push('userCached');
           }
           $scope.cache.put('userCached', response);
           console.log("cache >> step 2  cached key: userCached , value: " + $scope.cache.get('userCached') );
-            console.log($scope.cache.get('userCached'));
+            console.log($scope.cache.get('userCached'));*/
           //UserFacebookID.logged = true;
           console.log("1. send the current user to sever");
           console.log(UserFacebookID.user);
