@@ -227,7 +227,7 @@ myLogin.controller('loginCtrl', function($scope, $http, $timeout, $state, $cache
           $scope.user   = {};
           $scope.logged = false;
           UserFacebookID.user = {};
-          $scope.cache.removeAll();
+          UserFacebookID.cache.removeAll();
           UserFacebookID.logged = false;
           $state.go("index");
         //  event.preventDefault();

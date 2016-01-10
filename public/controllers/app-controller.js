@@ -152,11 +152,15 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cacheFactory, Fac
 
         /* cache the user */
         console.log("cache >> step 3... adding the user info to cache");
-        if (!angular.isUndefined(UserFacebookID.cache.get('userCached'))) {
+      /*  if (!angular.isUndefined(UserFacebookID.cache.get('userCached'))) {
           console.log("cache >> step 5  cached key: userCached , value: " + UserFacebookID.cache.get('userCached') );
           UserFacebookID.user = UserFacebookID.cache.get('userCached');
           console.log(UserFacebookID.user);
-        }
+        }*/
+
+        console.log("cache >> step 5  cached key: userCached , value: " + UserFacebookID.cache.get('userCached') );
+        UserFacebookID.user = UserFacebookID.cache.get('userCached');
+        console.log(UserFacebookID.user);
 
 
 
