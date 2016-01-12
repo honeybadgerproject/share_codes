@@ -26,30 +26,34 @@
    <!-- =================================================
    Banner Area End -->
 
-   <!-- Style forms Area
-      ====================================================== -->
-   <section class="team-area-top text-center">
-     <div class="row">
-       <div class="container">
-          <div class="medium-txt animated visible" data-animation="fadeInUp" data-animation-delay="400">&quot; Choose a style for your project. &quot;</div>
-         <p>
-           <a href="views/stylesolid/solid.html#/page?proyect_title={{ proyect_title }}&proyect_scope={{proyect_scope}}&proyect_content={{proyect_content}}" class="btn btn-primary btn-large" target="_blank">Solid style</a>&nbsp;&nbsp;&nbsp;&nbsp;
-           <a href="#" class="btn btn-primary btn-large" target="_blank">Plain style</a>&nbsp;&nbsp;&nbsp;&nbsp;
-           <a href="#" class="btn btn-primary btn-large" target="_blank">Primary style</a>
-         </p>
-       </div>
-     </div>
-     <div class="row">
-       <!-- Start: Navigation Area -->
-       <nav class="nav-main">
-         <ul class="menu-cont">
-           <li ><a href="#" class="btn btn-primary btn-large">Dashboard</a></li>
-           <li><a class="btn btn-primary btn-large">Search</a></li>
-           <li><a class="btn btn-primary btn-large">Contact</a></li>
+   <section class="our-blog-home text-center">
+     <div class="blog-home-cont">
+       <div class="heading-container visible" data-animation="fadeIn" data-animation-delay="200"><h4><i class="fa fa-bullhorn"></i> <i>{{project.project_title}} - ( {{project.classification}} )</i></h4></div>
+         <ul class="blog-conts">
+           <label class="tab-cont-right"><i class="fa fa-square"></i>&nbsp;&nbsp;Select</label>
+           <br>
+           <!-- Start: Blog 01 -->
+           <li class="animated visible" data-animation="fadeInUp" data-animation-delay="200">
+             <!--<div class="blog-date"><span>17</span>Dec</div>-->
+             <div class="blog-texts">
+
+               <h5>{{project.project_overview}}</h5>
+               <p class="blog-by">Posted By : Anju Droach in Web Designing</p>
+               <div><span>Last update:<time>{{project.project_last_update | date:'medium'}}</time>  -  Created on:<time>{{project.project_created_on | date:'medium'}}</span></div>
+             </div>
+             <!-- Start: View More Button -->
+             <br>
+             <label for="s3">show: </label>
+             <input type="checkbox" id="s3">
+             <label>&nbsp;&nbsp;&nbsp;&nbsp;rate: &nbsp;</label>5
+           </li>
+           <li class="animated visible" data-animation="fadeInUp" data-animation-delay="200">
+              <label>&nbsp;&nbsp;&nbsp;&nbsp;Select: &nbsp;</label>
+           </li>
+           <!-- End: Blog 01 -->
          </ul>
-       </nav>
-       <!-- End: Navigation Area -->
-     </div>
-   </section>
-   <!-- =================================================
-   Style forms Area End -->
+         <br><br>
+         <div class="blog-view-more animated visible" data-animation="fadeIn" data-animation-delay="200"><a href="#" class="view-more" ng-click="edit(project._id)" ui-sref="hackingzone">Hacking Zone</a></div>
+             <!-- End: View More Button -->
+       </div>
+     </section>

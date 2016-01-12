@@ -172,6 +172,30 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cookies, $cookieS
 
     };
 
+    /*---- tabs ----*/
+
+    $scope.tabIndexLabel = 1;
+
+    $scope.selectProjectLabel = function(setLabel) {
+      console.log("set Label: " + setLabel);
+      $scope.tabIndexLabel = setTab;
+    };
+
+    $scope.isSelectedProjectLabel  = function(checkLabel) {
+        console.log("check Label: " + checkLabel);
+      return $scope.tabIndexLabel === checkLabel;
+    };
+
+    $scope.classLabelFa = function(checkLabel) {
+        console.log("class Label: " + checkLabel);
+        var styleLabel = 'fa fa-square';
+        if($scope.tabIndexLabel === checkLabel) {
+          styleLabel = 'fa fa-check-square';
+        }
+      return styleLabel;
+    };
+
+
   //  refreshProjectList();
 
 
@@ -184,6 +208,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cookies, $cookieS
       newproject.project_created_on = new Date();
       newproject.user_owner = UserFacebookID.user.id;
       newproject.user_name = UserFacebookID.user.name;
+      project.project_style = "solid";
 
       $http.post('/projectlist', newproject).success(function(response) {
         console.log(response);

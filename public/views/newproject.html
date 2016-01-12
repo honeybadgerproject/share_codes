@@ -27,6 +27,32 @@
    Banner Area End -->
 <br>
 <div class="container">
+  <div class="row">
+    <form>
+      <!-- title field -->
+      <div class="form-group col-lg-8 col-md-8">
+        <label for="clasification">proyects and clasificate:</label>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="project.classification" ng-vale="1" checked>
+            1. In progress and with opotunity to participate.
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" ng-model="project.classification" ng-vale="2">
+            2. Finished but not mature and with opotunity to add your own work.
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios3" ng-model="project.classification" ng-vale="3">
+            3. Finished and mature project, ready to use.
+          </label>
+        </div>
+      </div>
+    </form>
+  </div>
 <div class="row">
   <form>
     <!-- title field -->
@@ -71,41 +97,6 @@
       <input type="text" class="form-control" id="cost" ng-model="project.project_price" placeholder="$">
     </div>
   </form>
-</div>
-<div class="row">
-  <!-- Style forms Area
-     ====================================================== -->
-  <section class="text-center">
-    <div class="row">
-      <div class="container">
-         <div class="medium-txt animated visible" data-animation="fadeInUp" data-animation-delay="400">&quot; Choose a style for your project. &quot;</div>
-      </div>
-      <br>
-      <nav class="nav-main text-center">
-        <ul class="menu-cont">
-          <li  data-ng-click="style_css.item = 'solid'">
-            <a ng-model="project.project_style" ng-vale="solid" data-ng-class="{'active' : style_css.item == 'solid'}"
-              href="views/stylesolid/solid.html#/page?proyect_title={{project.project_title}}&proyect_overview={{project.project_overview}}&proyect_content={{project.project_content}}&project.project_price={{project.project_cost}}&proyect_collaborators={{ proyect_collaborators }}"
-              class="btn btn-primary btn-large" target="_blank">Solid style</a>
-          </li>
-          <li data-ng-click="style_css.item = 'plain'">
-            <a ng-model="project.project_style" ng-vale="plain" data-ng-class="{'active' : style_css.item == 'plain'}"
-              href="views/styleplain/plain.html#/page?proyect_title={{project.project_title}}&proyect_overview={{project.project_overview}}&proyect_content={{project.project_content}}&project.project_price={{project.project_cost}}&proyect_collaborators={{ proyect_collaborators }}"
-              class="btn btn-primary btn-large" target="_blank">Plain style</a>
-          </li>
-          <li data-ng-click="style_css.item = 'primary'">
-            <a ng-model="project.project_style" ng-vale="primary" data-ng-class="{'active' : style_css.item == 'primary'}"
-              href="views/styleprimary/primary.html#/page?proyect_title={{project.project_title}}&proyect_overview={{project.project_overview}}&proyect_content={{project.project_content}}&project.project_price={{project.project_cost}}&proyect_collaborators={{ proyect_collaborators }}"
-              class="btn btn-primary btn-large" target="_blank">Primary style</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </section>
-  <br>
-  <br>
-  <!-- =================================================
-  Style forms Area End -->
 </div>
 <div class="row">
   <form>
