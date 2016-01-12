@@ -174,7 +174,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cookies, $cookieS
 
     /*---- tabs ----*/
 
-    $scope.tabIndexLabel = 1;
+    $scope.tabIndexLabel = 0;
 
     $scope.selectProjectLabel = function(setLabel) {
       console.log("set Label: " + setLabel);

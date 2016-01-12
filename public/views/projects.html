@@ -95,9 +95,9 @@
         <div class="blog-home-cont">
           <div class="heading-container visible" data-animation="fadeIn" data-animation-delay="200"><h4><i class="fa fa-bullhorn"></i> <i>{{project.project_title}} - ( {{project.classification}} )</i></h4></div>
             <ul class="blog-conts">
-              <label class="tab-cont-right" ng-class="{'activeProjectLabel': isSelectedProjectLabel($index)}"
+              <a class="tab-cont-right" ng-class="{'activeProjectLabel': isSelectedProjectLabel($index)}"
                   ng-click="selectProjectLabel($index)">
-                <i class="classLabelFa($index)"></i>&nbsp;&nbsp;Select</label>
+                <i ng-class="classLabelFa($index)"></i>&nbsp;&nbsp;Select</a>
               <br>
               <!-- Start: Blog 01 -->
               <li class="animated visible" data-animation="fadeInUp" data-animation-delay="200">

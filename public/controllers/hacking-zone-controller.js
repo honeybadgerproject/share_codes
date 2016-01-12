@@ -121,7 +121,7 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
 
   /*---- tabs ----*/
 
-  $scope.tabIndex = 1;
+  $scope.tabIndex = 0;
 
   $scope.selectTab = function(setTab) {
     console.log("set Tab: " + setTab);
