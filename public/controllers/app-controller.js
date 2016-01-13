@@ -60,7 +60,6 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
   /* edit and save new project */
   $stateProvider.state("saveproject", {
     url: '/update',
-    abstract: true,
     templateUrl: 'views/saveproject.html' ,
     data: {
       requireLogin: false
