@@ -184,15 +184,16 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cookies, $cookieS
     };
 
     $scope.isSelectedProjectLabel  = function(checkLabel) {
-        console.log("check Label: " + checkLabel);
+      //  console.log("check Label: " + checkLabel);
       return $scope.tabIndexLabel === checkLabel;
     };
 
     $scope.classLabelFa = function(checkLabel, id) {
-        console.log("class Label: " + checkLabel);
+      //  console.log("class Label: " + checkLabel);
         var styleLabel = 'fa fa-square';
         if($scope.tabIndexLabel === checkLabel) {
           styleLabel = 'fa fa-check-square';
+          console.log(id);
           project = id;
         }
       return styleLabel;
