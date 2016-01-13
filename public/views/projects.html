@@ -54,9 +54,9 @@
     <!-- right side -->
     <h6><a ui-sref="newproject">+ Add a new project</a></h6>
     <br>
-    <button type="button" class="btn btn-primary btn-large button-project-section-width" ng-click="edit(project._id)" ui-sref="saveproject">Edit</button>
+    <button type="button" class="btn btn-primary btn-large button-project-section-width" ng-click="edit()" ui-sref="saveproject">Edit</button>
     <br><br>
-    <button type="button" class="btn btn-primary btn-large button-project-section-width" ng-click="remove(project._id)" >Delete</button>
+    <button type="button" class="btn btn-primary btn-large button-project-section-width" ng-click="remove()" >Delete</button>
     <br><br>
     <!-- Style forms Area
        ====================================================== -->
@@ -96,7 +96,7 @@
           <div class="heading-container visible" data-animation="fadeIn" data-animation-delay="200"><h4><i class="fa fa-bullhorn"></i> <i>{{project.project_title}} - ( {{project.classification}} )</i></h4></div>
             <ul class="blog-conts">
               <a class="tab-cont-right" ng-class="{'activeProjectLabel': isSelectedProjectLabel($index)}"
-                  ng-click="selectProjectLabel($index)">
+                  ng-click="selectProjectLabel($index, project._id)">
                 <i ng-class="classLabelFa($index)"></i>&nbsp;&nbsp;Select</a>
               <br>
               <!-- Start: Blog 01 -->

@@ -176,9 +176,10 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cookies, $cookieS
 
     $scope.tabIndexLabel = 0;
 
-    $scope.selectProjectLabel = function(setLabel) {
+    $scope.selectProjectLabel = function(setLabel, id) {
       console.log("set Label: " + setLabel);
       $scope.tabIndexLabel = setLabel;
+      $scope.project._id = id;
     };
 
     $scope.isSelectedProjectLabel  = function(checkLabel) {
@@ -216,18 +217,18 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cookies, $cookieS
       });
     };
 
-    $scope.remove = function(id) {
-      console.log(id);
-      $http.delete('/projectlist/' + id).success(function(response) {
+    $scope.remove = function() {
+      console.log($scope.project._id);
+      $http.delete('/projectlist/' + $scope.project._id).success(function(response) {
         refreshProjectList();
       });
     };
 
-    $scope.edit = function(id) {
+    $scope.edit = function() {
 
-      console.log(id);
+      console.log($scope.project._id);
       console.log("into edit");
-      $http.get('/projectlist/' + id).success(function(response) {
+      $http.get('/projectlist/' + $scope.project._id).success(function(response) {
         $scope.project = response;
       });
     };
