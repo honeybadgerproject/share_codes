@@ -110,19 +110,19 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cookies, $cookieS
 
     $scope.changeStyle1 = function() {
 
-      console.log("change to class 1");
+    //  console.log("change to class 1");
 
        $scope.wstyle = "style1";
     };
 
     $scope.changeStyle2 = function() {
-      console.log("change to class 2");
+      //console.log("change to class 2");
 
        $scope.wstyle = "style2";
     };
 
     $scope.changeStyle3 = function() {
-      console.log("change to class 3");
+      //console.log("change to class 3");
 
        $scope.wstyle = "style3";
     };
@@ -178,8 +178,9 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cookies, $cookieS
 
     $scope.selectProjectLabel = function(setLabel, id) {
       console.log("set Label: " + setLabel);
+      console.log(id);
       $scope.tabIndexLabel = setLabel;
-      $scope.project._id = id;
+      $scope.project = id;
     };
 
     $scope.isSelectedProjectLabel  = function(checkLabel) {
@@ -187,11 +188,12 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cookies, $cookieS
       return $scope.tabIndexLabel === checkLabel;
     };
 
-    $scope.classLabelFa = function(checkLabel) {
+    $scope.classLabelFa = function(checkLabel, id) {
         console.log("class Label: " + checkLabel);
         var styleLabel = 'fa fa-square';
         if($scope.tabIndexLabel === checkLabel) {
           styleLabel = 'fa fa-check-square';
+          project = id;
         }
       return styleLabel;
     };
@@ -219,7 +221,8 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cookies, $cookieS
 
     $scope.remove = function() {
       console.log($scope.project._id);
-      $http.delete('/projectlist/' + $scope.project._id).success(function(response) {
+      var id = $scope.project._id;
+      $http.delete('/projectlist/' + id).success(function(response) {
         refreshProjectList();
       });
     };
@@ -227,8 +230,9 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cookies, $cookieS
     $scope.edit = function() {
 
       console.log($scope.project._id);
+      var id = $scope.project._id;
       console.log("into edit");
-      $http.get('/projectlist/' + $scope.project._id).success(function(response) {
+      $http.get('/projectlist/' + id).success(function(response) {
         $scope.project = response;
       });
     };
