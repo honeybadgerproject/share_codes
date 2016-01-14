@@ -193,9 +193,89 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
     console.log($scope.newtab._id);
 
     $http.put('/notelist/' + newtab._id, newtab).success(function(response) {
-      refreshTabList();
+      refreshNoteList();
     });
   };
+
+  /*---- tabs private----*/
+
+  $scope.tabIndexPrivate = 0;
+
+  $scope.selectTabPrivate = function(setTab) {
+    console.log("set Tab: " + setTab);
+    $scope.tabIndexPrivate = setTab;
+  };
+
+  $scope.isSelectedPrivate  = function(checkTab) {
+      console.log("check Tab: " + checkTab);
+    return $scope.tabIndexPrivate === checkTab;
+  };
+
+
+  var refreshNoteListPrivate = function() {
+    if(UserFacebookID.user.id) {
+
+      $http.get('/notelistownerprivate/' + UserFacebookID.user.id).success(function(response) {
+        console.log("refresh tab");
+        $scope.notelistprivate = response;
+        console.log($scope.notelistprivate);
+        $scope.noteprivate = "";
+      });
+    }
+  };
+
+  refreshNoteListPrivate();
+
+
+  $scope.addnewtabprivate = function() {
+    //console.log(newtab);
+    console.log("add new note");
+
+    if(UserFacebookID.user.id) {
+
+      var newnote = {
+        user_owner: UserFacebookID.user.id,
+        id_tab: "note",
+        tab_name: "note",
+        tab_content: ""
+      };
+      console.log(newnote);
+      $http.post('/notelistprivate', newnote).success(function(response) {
+        console.log(response);
+        refreshNoteListPrivate();
+      });
+    }
+  };
+
+  $scope.removetabprivate = function(id) {
+    console.log(id);
+    $http.delete('/notelistprivate/' + id).success(function(response) {
+      refreshNoteListPrivate();
+    });
+  };
+
+
+  $scope.edittabprivate = function(id) {
+
+    console.log(id);
+    console.log("into tab");
+    $http.get('/notelistprivate/' + id).success(function(response) {
+      $scope.noteprivate = response;
+    });
+  };
+
+  $scope.updatetabprivate = function(newtab) {
+    console.log("add this edit tab");
+    console.log(newtab);
+    console.log("end add this edit tab");
+    console.log($scope.newtabprivate._id);
+
+    $http.put('/notelistprivate/' + newtabprivate._id, newtab).success(function(response) {
+      refreshNoteListPrivate();
+    });
+  };
+
+
 
 
   /****  Dialog ****/

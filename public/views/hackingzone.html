@@ -29,7 +29,7 @@
 
 <div ng-controller="hackingZoneCtrl">
 <div class="row">
-  <div class="form-group col-lg-12 col-md-12">
+  <div class="form-group col-lg-6 col-md-6">
 
     <!-- About Area Start
       ====================================================== -->
@@ -50,11 +50,7 @@
        </div>
       </section>
   </div>
-</div>
-<br>
-<br>
-<div class="row">
-  <div class="form-group col-lg-12 col-md-12">
+  <div class="form-group col-lg-6 col-md-6">
       <!-- About Area Start
         ====================================================== -->
       <section class="about-area" id="about">
@@ -78,7 +74,7 @@
 <br>
 <br>
 <div class="row">
-  <div class="form-group col-lg-12 col-md-12">
+  <div class="form-group col-lg-6 col-md-6">
     <!-- About Area Start
       ====================================================== -->
     <section class="about-area" id="about">
@@ -87,7 +83,7 @@
        <div class="about-top-area">
          <hr class="special">
          <br>
-         <a ng-click="addnewtab()"><h5>+ Add a new tab</h5></a>
+         <a ng-click="addnewtab()"><h5>+ Add a note</h5></a>
        </div>
        <br>
 
@@ -105,10 +101,6 @@
                  <li ng-repeat="tabs in notelist" ng-class="{'active': isSelected($index)}">
                    <a ng-click="selectTab($index)">{{tabs.tab_name}}<span ng-click="removetab(tabs._id)">-</span></a>
                  </li>
-              <!--   <li role="presentation" ng-click="addnewtab()">
-                   <a aria-controls="home" role="tab" data-toggle="tab" >( + )</a>
-                 </li>-->
-              <!-- <a>  href="{{'#tab' + $index}}" </a>  <li><a data-toggle="tab" href="#tab1">tab 1</a></li>-->
               </ul>
             </div>
           </div>
@@ -117,6 +109,52 @@
               <div ng-repeat="tabs in notelist" class="tab-cont clearfix" ng-class="{'active': isSelected($index)}" ng-show="tabIndex === {{$index}}">
                 <textarea class="form-control" rows="7" id="content" ng-model="note.tab_content" >{{tab.tab_content}}</textarea>
                 <label>tab name:  </label><input type="text" value="{{note.tab_name}}" ng-model="note.tab_name" ><button ng-click="updatetab(tabs)">save</button>
+              </div>
+            </div>
+          </div>
+         </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+  </div>
+  <!---- second notes -->
+  <div class="form-group col-lg-6 col-md-6">
+    <!-- About Area Start
+      ====================================================== -->
+    <section class="about-area" id="about">
+
+        <!-- Start: About Top -->
+       <div class="about-top-area">
+         <hr class="special">
+         <br>
+         <a ng-click="addnewtabprivate()"><h5>+ Add a private note</h5></a>
+       </div>
+       <br>
+
+
+      <!-- tab container -->
+       <div class="container">
+
+        <div role="tabpanel">
+          <!-- Start: Tab Area -->
+         <div class="col-md-12 about-tab animated visible" data-animation="fadeInUp" data-animation-delay="400">
+         <div class="row">
+           <div class="col-md-2">
+             <div id="tab-container">
+               <ul class="nav nav-pills nav-stacked">
+                 <li ng-repeat="tabs in notelist" ng-class="{'active': isSelectedPrivate($index)}">
+                   <a ng-click="selectTabPrivate($index)">{{tabs.tab_name}}<span ng-click="removetabprivate(tabs._id)">-</span></a>
+                 </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-10">
+            <div class="panel-container">
+              <div ng-repeat="tabs in notelist" class="tab-cont clearfix" ng-class="{'active': isSelectedPrivate($index)}" ng-show="tabIndex === {{$index}}">
+                <textarea class="form-control" rows="7" id="content" ng-model="noteprivate.tab_content" >{{tab.tab_content}}</textarea>
+                <label>tab name:  </label><input type="text" value="{{noteprivate.tab_name}}" ng-model="noteprivate.tab_name" ><button ng-click="updatetabprivate(tabs)">save</button>
               </div>
             </div>
           </div>
