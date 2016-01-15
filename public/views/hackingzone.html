@@ -135,7 +135,7 @@
 
 
       <!-- tab container -->
-      
+
 
         <div role="tabpanel">
           <!-- Start: Tab Area -->
@@ -144,7 +144,7 @@
            <div class="col-md-2">
              <div id="tab-container">
                <ul class="nav nav-pills nav-stacked">
-                 <li ng-repeat="tabs in notelist" ng-class="{'active': isSelectedPrivate($index)}">
+                 <li ng-repeat="tabs in notelistprivate" ng-class="{'active': isSelectedPrivate($index)}">
                    <a ng-click="selectTabPrivate($index)">{{tabs.tab_name}}<span ng-click="removetabprivate(tabs._id)">-</span></a>
                  </li>
               </ul>
@@ -152,7 +152,7 @@
           </div>
           <div class="col-md-10">
             <div class="panel-container">
-              <div ng-repeat="tabs in notelist" class="tab-cont clearfix" ng-class="{'active': isSelectedPrivate($index)}" ng-show="tabIndex === {{$index}}">
+              <div ng-repeat="tabs in notelistprivate" class="tab-cont clearfix" ng-class="{'active': isSelectedPrivate($index)}" ng-show="tabIndex === {{$index}}">
                 <textarea class="form-control" rows="7" id="content" ng-model="noteprivate.tab_content" >{{tab.tab_content}}</textarea>
                 <label>tab name:  </label><input type="text" value="{{noteprivate.tab_name}}" ng-model="noteprivate.tab_name" ><button ng-click="updatetabprivate(tabs)">save</button>
               </div>
