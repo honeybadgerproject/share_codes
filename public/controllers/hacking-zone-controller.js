@@ -146,7 +146,7 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
           id_tab: "note",
           tab_name: "note",
           tab_content: ""
-        };;
+        };
       });
     }
   };
@@ -193,12 +193,12 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
 
   $scope.updatetab = function(newtab) {
 
-    newtab.tab_name = $scope.note.tab_name;
-    newtab.tab_content = $scope.note.tab_content
+    //newtab.tab_name = $scope.note.tab_name;
+    //newtab.tab_content = $scope.note.tab_content
     console.log("add this edit tab");
     console.log(newtab);
     console.log("end add this edit tab");
-    console.log($scope.newtab._id);
+    console.log(newtab._id);
 
 
     $http.put('/notelist/' + newtab._id, newtab).success(function(response) {
