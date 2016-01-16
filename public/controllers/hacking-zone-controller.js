@@ -141,7 +141,12 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
         console.log("refresh tab");
         $scope.notelist = response;
         console.log($scope.notelist);
-        $scope.note = "";
+        $scope.note = {
+          user_owner: "",
+          id_tab: "note",
+          tab_name: "note",
+          tab_content: ""
+        };;
       });
     }
   };
@@ -187,10 +192,14 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
   };
 
   $scope.updatetab = function(newtab) {
+
+    newtab.tab_name = $scope.note.tab_name;
+    newtab.tab_content = $scope.note.tab_content
     console.log("add this edit tab");
     console.log(newtab);
     console.log("end add this edit tab");
     console.log($scope.newtab._id);
+
 
     $http.put('/notelist/' + newtab._id, newtab).success(function(response) {
       refreshNoteList();
@@ -229,7 +238,7 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
 
   $scope.addnewtabprivate = function() {
     //console.log(newtab);
-    console.log("add new note");
+    console.log("add new private note");
 
     if(UserFacebookID.user.id) {
 

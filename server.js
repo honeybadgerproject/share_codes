@@ -182,7 +182,7 @@ app.get('/notelistownerprivate/:id', function(req, res) {
   console.log("request");
   var id = req.params.id;
 
-  dbtab.notelistprivate.find( { "user_owner": id} , function(err, docs) {
+  dbtabprivate.notelistprivate.find( { "user_owner": id} , function(err, docs) {
     console.log(docs);
     res.json(docs);
   });
@@ -190,7 +190,7 @@ app.get('/notelistownerprivate/:id', function(req, res) {
 
 app.post('/notelistprivate', function(req, res) {
   console.log(req.body);
-  dbtab.notelistprivate.insert(req.body, function(err, doc) {
+  dbtabprivate.notelistprivate.insert(req.body, function(err, doc) {
     res.json(doc);
   });
 });
@@ -199,7 +199,7 @@ app.post('/notelistprivate', function(req, res) {
 app.delete('/notelistprivate/:id', function(req, res) {
   var id = req.params.id;
   console.log(id);
-  dbtab.notelistprivate.remove({_id: mongojs.ObjectId(id)}, function(err, doc) {
+  dbtabprivate.notelistprivate.remove({_id: mongojs.ObjectId(id)}, function(err, doc) {
     res.json(doc);
   });
 });
@@ -208,7 +208,7 @@ app.get('/notelistprivate/:id', function(req, res) {
   var id = req.params.id;
   console.log(id);
   console.log("into server");
-  dbtab.notelistprivate.findOne({_id: mongojs.ObjectId(id)}, function(err, doc) {
+  dbtabprivate.notelistprivate.findOne({_id: mongojs.ObjectId(id)}, function(err, doc) {
     res.json(doc);
   });
 });
@@ -216,7 +216,7 @@ app.get('/notelistprivate/:id', function(req, res) {
 app.put('/notelistprivate/:id', function(req, res) {
   var id = req.params.id;
   console.log(req.body.tab_name);
-  dbtab.notelistprivate.findAndModify({query: {_id: mongojs.ObjectId(id)},
+  dbtabprivate.notelistprivate.findAndModify({query: {_id: mongojs.ObjectId(id)},
     update: {$set: {user_owner: req.body.user_owner, id_tab: req.body.id_tab,
       tab_name: req.body.tab_name, tab_content: req.body.tab_content}},
     new: true}, function(err, doc) {
