@@ -277,9 +277,9 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
     console.log("add this edit tab");
     console.log(newtab);
     console.log("end add this edit tab");
-    console.log($scope.newtabprivate._id);
+    console.log(newtab._id);
 
-    $http.put('/notelistprivate/' + newtabprivate._id, newtab).success(function(response) {
+    $http.put('/notelistprivate/' + newtab._id, newtab).success(function(response) {
       refreshNoteListPrivate();
     });
   };
