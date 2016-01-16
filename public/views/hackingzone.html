@@ -152,7 +152,7 @@
           </div>
           <div class="col-md-10">
             <div class="panel-container">
-              <div ng-repeat="tabs in notelistprivate" class="tab-cont clearfix" ng-class="{'active': isSelectedPrivate($index)}" ng-show="tabIndex === {{$index}}">
+              <div ng-repeat="tabs in notelistprivate" class="tab-cont clearfix" ng-class="{'active': isSelectedPrivate($index)}" ng-show="tabIndexPrivate === {{$index}}">
                 <textarea class="form-control" rows="7" id="content" ng-model="tabs.tab_content" >{{tabs.tab_content}}</textarea>
                 <label>tab name:  </label><input type="text" value="{{tabs.tab_name}}" ng-model="tabs.tab_name" ><button ng-click="updatetabprivate(tabs)">save</button>
               </div>
