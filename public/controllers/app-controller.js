@@ -211,7 +211,7 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cookies, $cookieS
       newproject.project_created_on = new Date();
       newproject.user_owner = UserFacebookID.user.id;
       newproject.user_name = UserFacebookID.user.name;
-      project.project_style = "solid";
+      newproject.project_style = "solid";
 
       $http.post('/projectlist', newproject).success(function(response) {
         console.log(response);
