@@ -43,7 +43,12 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
 
     if(UserFacebookID.user.id) {
 
-      $http.get('/resourcelistowner/' + UserFacebookID.user.id ).success(function(response) {
+      var listParams = {
+        user_owner: UserFacebookID.user.id,
+        project_id: UserFacebookID.project_id
+      };
+
+      $http.get('/resourcelistowner/' + listParams ).success(function(response) {
         console.log("refresh");
         $scope.resourcelist = response;
         $scope.resource = "";
@@ -59,6 +64,7 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
       if(UserFacebookID.user.id) {
 
         newresource.user_owner = UserFacebookID.user.id;
+        newresource.id_project = UserFacebookID.project_id;
         $http.post('/resourcelist', newresource).success(function(response) {
           console.log(response);
           if($scope.modalInstance)
@@ -83,7 +89,12 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
 
     if(UserFacebookID.user.id) {
 
-      $http.get('/contributorslistowner/' + UserFacebookID.user.id).success(function(response) {
+      var listParams = {
+        user_owner: UserFacebookID.user.id,
+        project_id: UserFacebookID.project_id
+      };
+
+      $http.get('/contributorslistowner/' + listParams).success(function(response) {
         console.log("refresh");
         $scope.contributorslist = response;
         $scope.contributor = "";
@@ -99,6 +110,7 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
     console.log($scope.contributor);
     if(UserFacebookID.user.id) {
       newcontributor.user_owner = UserFacebookID.user.id;
+      newcontributor.id_project = UserFacebookID.project_id;
       $http.post('/contributorslist', newcontributor).success(function(response) {
         console.log(response);
 
@@ -137,7 +149,12 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
   var refreshNoteList = function() {
     if(UserFacebookID.user.id) {
 
-      $http.get('/notelistowner/' + UserFacebookID.user.id).success(function(response) {
+      var listParams = {
+        user_owner: UserFacebookID.user.id,
+        project_id: UserFacebookID.project_id
+      };
+
+      $http.get('/notelistowner/' + listParams).success(function(response) {
         console.log("refresh tab");
         $scope.notelist = response;
         console.log($scope.notelist);
@@ -164,6 +181,7 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
         user_owner: UserFacebookID.user.id,
         id_tab: "note",
         tab_name: "note",
+        id_project: UserFacebookID.project_id ,
         tab_content: ""
       };
       console.log(newnote);
@@ -224,7 +242,12 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
   var refreshNoteListPrivate = function() {
     if(UserFacebookID.user.id) {
 
-      $http.get('/notelistownerprivate/' + UserFacebookID.user.id).success(function(response) {
+      var listParams = {
+        user_owner: UserFacebookID.user.id,
+        project_id: UserFacebookID.project_id
+      };
+
+      $http.get('/notelistownerprivate/' + listParams).success(function(response) {
         console.log("refresh tab");
         $scope.notelistprivate = response;
         console.log($scope.notelistprivate);
@@ -246,6 +269,7 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
         user_owner: UserFacebookID.user.id,
         id_tab: "note",
         tab_name: "note",
+        id_project: UserFacebookID.project_id ,
         tab_content: ""
       };
       console.log(newnote);

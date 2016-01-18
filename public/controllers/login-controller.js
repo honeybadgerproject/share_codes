@@ -4,7 +4,8 @@ myLogin.factory('UserFacebookID', function() {
     return {
         user: {} ,
         scopeState: 'index' ,
-        logged: false
+        logged: false ,
+        project_id: ""
     };
 });
 

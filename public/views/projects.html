@@ -1,32 +1,3 @@
-
-<!-- show the projects -->
-<!--<div ng-repeat="project in projectlist">
-  <div class="row">
-
-    <div class="form-group col-lg-8 col-md-8  panel panel-default">
-      <p>
-        Last update:<time>{{project.project_last_update | date:'medium'}}</time>  -  Created on:<time>{{project.project_created_on | date:'medium'}}</time>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button ui-sref="hackingzone">Hacking zone project</button>
-      </p>
-      <article>
-        <h2>{{project.project_title}}</h2>
-        <p>{{project.project_overview}}</p>
-      </article>
-      <p>
-        <label for="s3">show: </label>
-        <input type="checkbox" id="s3">
-        <label>&nbsp;&nbsp;&nbsp;&nbsp;rate: &nbsp;</label>5
-        <br>
-        <input type="button" value="edit" ng-click="edit(project._id)" ui-sref="saveproject">
-        <input type="button" value="preview" ng-click="edit(project._id)" ui-sref="preview">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="button" value="delete"  ng-click="remove(project._id)">
-      </p>
-    </div>
-  </div>
-</div>--> <!-- end show the projects -->
-
 <!-- Banner Area
    ====================================================== -->
    <section id="home" ng-init="refreshProjectListHtml()">
@@ -116,7 +87,7 @@
             <label>&nbsp;&nbsp;&nbsp;&nbsp;rate: &nbsp;</label>5
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <br><br>
-            <div class="blog-view-more animated visible" data-animation="fadeIn" data-animation-delay="200"><a href="#" class="view-more" ng-click="edit(project._id)" ui-sref="hackingzone">Hacking Zone</a></div>
+            <div class="blog-view-more animated visible" data-animation="fadeIn" data-animation-delay="200"><a href="#" class="view-more" ng-click="select(project._id)" ui-sref="hackingzone">Hacking Zone</a></div>
                 <!-- End: View More Button -->
           </div>
         </section>

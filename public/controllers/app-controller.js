@@ -237,6 +237,15 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cookies, $cookieS
       });
     };
 
+    $scope.select = function(id) {
+
+      console.log("into select");
+      UserFacebookID.project_id = id;
+      /*$http.get('/projectlist/' + id).success(function(response) {
+        $scope.project = response;
+      });*/
+    };
+
     $scope.update = function() {
       console.log("add this edit project");
       console.log($scope.project);

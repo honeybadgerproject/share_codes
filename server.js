@@ -72,11 +72,12 @@ app.post('/buy-something', function(req, res) {
 
 /**** start collaborators section ****/
 
-app.get('/contributorslistowner/:id', function(req, res) {
+app.get('/contributorslistowner/:listParams', function(req, res) {
   console.log("request");
-  var id = req.params.id;
+  var id = req.params.listParams.user_owner;
+  var id2 = req.params.listParams.project_id;
 
-  dbctr.contributorslist.find({ "user_owner": id} , function(err, docs) {
+  dbctr.contributorslist.find({ "user_owner": id , "id_project": id2} , function(err, docs) {
     console.log(docs);
     res.json(docs);
   });
@@ -101,11 +102,12 @@ app.delete('/contributorslist/:id', function(req, res) {
 
 /**** start resource section ****/
 
-app.get('/resourcelistowner/:id', function(req, res) {
+app.get('/resourcelistowner/:listParams', function(req, res) {
   console.log("request");
-  var id = req.params.id;
+  var id = req.params.listParams.user_owner;
+  var id2 = req.params.listParams.project_id;
 
-  dbsrc.resourcelist.find( { "user_owner": id} , function(err, docs) {
+  dbsrc.resourcelist.find( { "user_owner": id , "id_project": id2 } , function(err, docs) {
     console.log(docs);
     res.json(docs);
   });
@@ -129,11 +131,12 @@ app.delete('/resourcelist/:id', function(req, res) {
 
 /**** start tab section ****/
 
-app.get('/notelistowner/:id', function(req, res) {
+app.get('/notelistowner/:listParams', function(req, res) {
   console.log("request");
-  var id = req.params.id;
+  var id = req.params.listParams.user_owner;
+  var id2 = req.params.listParams.project_id;
 
-  dbtab.notelist.find( { "user_owner": id} , function(err, docs) {
+  dbtab.notelist.find( { "user_owner": id, "id_project": id2} , function(err, docs) {
     console.log(docs);
     res.json(docs);
   });
@@ -178,11 +181,12 @@ app.put('/notelist/:id', function(req, res) {
 
 /**** start tab private section ****/
 
-app.get('/notelistownerprivate/:id', function(req, res) {
+app.get('/notelistownerprivate/:listParams', function(req, res) {
   console.log("request");
-  var id = req.params.id;
+  var id = req.params.listParams.user_owner;
+  var id2 = req.params.listParams.project_id;
 
-  dbtabprivate.notelistprivate.find( { "user_owner": id} , function(err, docs) {
+  dbtabprivate.notelistprivate.find( { "user_owner": id , "id_project": id2} , function(err, docs) {
     console.log(docs);
     res.json(docs);
   });
@@ -228,6 +232,7 @@ app.put('/notelistprivate/:id', function(req, res) {
 
 app.get('/refreshProjectWithUser/:id', function(req, res) {
   var id = req.params.id;
+
   console.log(id);
 
   db.projectlist.find({ "user_owner": id} , function(err, docs) {
