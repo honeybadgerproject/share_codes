@@ -93,6 +93,7 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
         user_owner: UserFacebookID.user.id,
         project_id: UserFacebookID.project_id
       };
+        console.log(listParams);
 
       $http.get('/contributorslistowner/' + listParams).success(function(response) {
         console.log("refresh contributor list");

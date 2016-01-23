@@ -73,7 +73,9 @@ app.post('/buy-something', function(req, res) {
 /**** start collaborators section ****/
 
 app.get('/contributorslistowner/:listParams', function(req, res) {
-  console.log("request");
+
+  console.log(req.params.listParams.project_id);
+  console.log(req.params.listParams.user_owner);
   var id = req.params.listParams.user_owner;
   var id2 = req.params.listParams.project_id;
 
