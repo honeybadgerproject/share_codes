@@ -78,6 +78,7 @@ app.get('/contributorslistowner/:listParams', function(req, res) {
   var id2 = req.params.listParams.project_id;
 
   dbctr.contributorslist.find({ "user_owner": id , "id_project": id2} , function(err, docs) {
+    console.log("request for contributors");
     console.log(docs);
     res.json(docs);
   });
