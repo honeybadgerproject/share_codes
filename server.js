@@ -72,12 +72,12 @@ app.post('/buy-something', function(req, res) {
 
 /**** start collaborators section ****/
 
-app.get('/contributorslistowner/:listParams', function(req, res) {
+app.post('/contributorslistowner', function(req, res) {
 
-  console.log(req.params.listParams.project_id);
-  console.log(req.params.listParams.user_owner);
-  var id = req.params.listParams.user_owner;
-  var id2 = req.params.listParams.project_id;
+  console.log(req.body.project_id);
+  console.log(req.body.user_owner);
+  var id = req.body.user_owner;
+  var id2 = req.body.project_id;
 
   dbctr.contributorslist.find({ "user_owner": id , "id_project": id2} , function(err, docs) {
     console.log("request for contributors");

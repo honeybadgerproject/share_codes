@@ -95,7 +95,7 @@ myHacking.controller('hackingZoneCtrl', function($scope, $http, $modal, $log, Us
       };
         console.log(listParams);
 
-      $http.get('/contributorslistowner/' + listParams).success(function(response) {
+      $http.post('/contributorslistowner/', listParams).success(function(response) {
         console.log("refresh contributor list");
         $scope.contributorslist = response;
         $scope.contributor = "";
