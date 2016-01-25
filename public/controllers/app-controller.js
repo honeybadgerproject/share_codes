@@ -209,7 +209,13 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cookies, $cookieS
       // asign last updated project and created on
       newproject.project_last_update = new Date();
       newproject.project_created_on = new Date();
-      newproject.user_owner = UserFacebookID.user.id;
+      //newproject.user_owner = UserFacebookID.user.id;
+
+      /**** change the add user_owner by and array ****/
+      newproject.user_owner = [ { owner: UserFacebookID.user.id ,
+                                role: 'admin' } ];
+
+
       newproject.user_name = UserFacebookID.user.name;
       newproject.project_style = "solid";
 

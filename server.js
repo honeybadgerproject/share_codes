@@ -88,27 +88,34 @@ app.post('/contributorslistowner', function(req, res) {
 
 app.post('/contributorslist', function(req, res) {
   console.log(req.body);
-  dbctr.contributorslist.insert(req.body, function(err, doc) {
+  db.projectlist.update({"_id" : req.body.id_project } ,
+                                { $push: { "user_owner": req.body.linkContributor  }} ,
+                              function(err, doc) {
+                                  res.json(doc);
+                                });
+/*  dbctr.contributorslist.insert(req.body, function(err, doc) {
     res.json(doc);
-  });
+  });*/
 });
 
 
 app.delete('/contributorslist/:id', function(req, res) {
-  var id = req.params.id;
+  /*var id = req.params.id;
   console.log(id);
-  dbctr.contributorslist.remove({_id: mongojs.ObjectId(id)}, function(err, doc) {
-    res.json(doc);
-  });
+  db.projectlist.remove({"_id" : req.body.id_project } ,
+                                { $pull: { "user_owner": linkContributor  }} ,
+                              function(err, doc) {
+                                  res.json(doc);
+                                });*/
 });
 
 
 /**** start resource section ****/
 
-app.get('/resourcelistowner/:listParams', function(req, res) {
+app.post('/resourcelistowner', function(req, res) {
   console.log("request");
-  var id = req.params.listParams.user_owner;
-  var id2 = req.params.listParams.project_id;
+  var id = req.body.user_owner;
+  var id2 = req.body.project_id;
 
   dbsrc.resourcelist.find( { "user_owner": id , "id_project": id2 } , function(err, docs) {
     console.log(docs);
@@ -134,10 +141,10 @@ app.delete('/resourcelist/:id', function(req, res) {
 
 /**** start tab section ****/
 
-app.get('/notelistowner/:listParams', function(req, res) {
+app.post('/notelistowner', function(req, res) {
   console.log("request");
-  var id = req.params.listParams.user_owner;
-  var id2 = req.params.listParams.project_id;
+  var id = req.body.user_owner;
+  var id2 = req.body.project_id;
 
   dbtab.notelist.find( { "user_owner": id, "id_project": id2} , function(err, docs) {
     console.log(docs);
@@ -184,10 +191,9 @@ app.put('/notelist/:id', function(req, res) {
 
 /**** start tab private section ****/
 
-app.get('/notelistownerprivate/:listParams', function(req, res) {
-  console.log("request");
-  var id = req.params.listParams.user_owner;
-  var id2 = req.params.listParams.project_id;
+app.post('/notelistownerprivate/:listParams', function(req, res) {
+  var id = req.body.user_owner;
+  var id2 = req.body.project_id;
 
   dbtabprivate.notelistprivate.find( { "user_owner": id , "id_project": id2} , function(err, docs) {
     console.log(docs);
