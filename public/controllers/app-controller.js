@@ -46,7 +46,7 @@ myApp.config(function($stateProvider, $urlRouterProvider, FacebookProvider) {
     url: '/projects',
     templateUrl: 'views/projects.html' ,
     data: {
-      requireLogin: true
+      requireLogin: false
     }
   });
   /* add new project */
@@ -135,8 +135,14 @@ myApp.controller('AppCtrl', function($scope, $http, $timeout, $cookies, $cookieS
     });
 
     $scope.refreshProjectListHtml = function() {
-      console.log("refresh projectlist:  " + UserFacebookID.logged );
-      refreshProjectList();
+    //  console.log("refresh projectlist:  " + UserFacebookID.logged );
+      //refreshProjectList();
+
+      console.log("refresh HTML test");
+      $http.get('/refreshProjectList').success(function(response) {
+        console.log("refresh test");
+      });
+
     };
 
     var refreshProjectList = function() {
