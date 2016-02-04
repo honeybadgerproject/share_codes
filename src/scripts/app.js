@@ -21,6 +21,7 @@
 		/* custom modules */
 		"app.ctrls",
 		"app.login",
+		"app.projectlist",
 		"app.directives",
 		"app.ui.ctrls",
 		"app.ui.directives",
@@ -141,7 +142,7 @@
 			"icons/font-awesome", "icons/ionicons",
 			"forms/wizard",
 			"tables/tables",
-			 "pages/signup", "pages/404", "pages/forget-pass", "pages/lock-screen", "pages/invoice", "pages/search", "pages/timeline"
+			"pages/signup", "pages/404", "pages/forget-pass", "pages/lock-screen", "pages/invoice", "pages/search", "pages/timeline"
 		];
 
 		function setRoutes(route) {
@@ -190,6 +191,32 @@
 			}
 		});
 
+		// text angular loaded in /addnewproject
+		$routeProvider.when("/addnewproject", {
+			templateUrl: "views/addnewproject.html" ,
+			resolve: {
+				deps: ["$ocLazyLoad", function(a) {
+					return a.load({
+						name: "app.ctrls",
+						files: ["scripts/lazyload/controllers/materialCtrl.js"]
+					})
+				}]
+			}
+		});
+
+		//text angular loaded in /editproject
+		$routeProvider.when("/editproject", {
+			templateUrl: "views/editproject.html",
+			resolve: {
+				deps: ["$ocLazyLoad", function(a) {
+					return a.load({
+						name: "app.ctrls",
+						files: ["scripts/lazyload/controllers/materialCtrl.js"]
+					})
+				}]
+			}
+		});
+
 		// text angular loaded in email/inbox
 		$routeProvider.when("/email/inbox", {
 			templateUrl: "views/email/inbox.html",
@@ -223,6 +250,24 @@
 		// Material Controller (For demo)
 		$routeProvider.when("/material", {
 			templateUrl: "views/material.html",
+			resolve: {
+				deps: ["$ocLazyLoad", function(a) {
+					return a.load({
+						name: "app.ctrls",
+						files: ["scripts/lazyload/controllers/materialCtrl.js"]
+					})
+				}]
+			}
+		});
+
+		// Material Controller (For demo)
+		$routeProvider.when("/pages/hacking-zone", {
+			templateUrl: "views/pages/hacking-zone.html",
+			/*resolve: {
+				deps: ["$ocLazyLoad", function(a) {
+					return a.load("textAngular");
+				}]
+			}*/
 			resolve: {
 				deps: ["$ocLazyLoad", function(a) {
 					return a.load({

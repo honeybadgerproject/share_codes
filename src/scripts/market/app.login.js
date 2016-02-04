@@ -95,7 +95,7 @@ angular.module("app.login" , [])
           $scope.me();
 
           console.log("step 5... jumping to the previus state");
-          if(UserFacebookID.scopeState != "index") {
+          if(UserFacebookID.scopeState != "/pages/signin") {
             $location.path(UserFacebookID.scopeState);
           }
         }
@@ -123,7 +123,7 @@ angular.module("app.login" , [])
           $scope.me();
 
           console.log("step 5... jumping to the previus state");
-          if(UserFacebookID.scopeState != "index") {
+          if(UserFacebookID.scopeState != "/pages/signin") {
             $location.path(UserFacebookID.scopeState);
           }
         }

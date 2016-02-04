@@ -1,32 +1,39 @@
-//module.exports = {
-
   /**** start projects section ****/
   var mongojs = require('mongojs');
   var db = mongojs('projectlist', ['projectlist']);
 
   exports.setProjectList = function(app) {
-//  app.get('/refreshProjectWithUser', function(req, res) {
- app.get('/refreshProjectList', function(req, res) {
-  //  var id = req.params.id;
 
-    console.log("id test");
+    app.get('/refreshProjectWithUser/:id', function(req, res) {
+      var id = req.params.id;
 
-  /*  db.projectlist.find({ "user_owner": id} , function(err, docs) {
-      console.log(docs);
-      res.json(docs);
-    });*/
+      db.projectlist.find({$or: [{user_owner:{owner:id, role: "admin"}},{user_owner:{owner:id, role: "super"}}]} , function(err, docs) {  
+        res.json(docs);
+      });
 
-  });
+    });
+
+    // create a new project
+    app.post('/projectlist', function(req, res) {
+      console.log(req.body);
+      db.projectlist.insert(req.body, function(err, doc) {
+        res.json(doc);
+      });
+    });
 };
 
-/*
-  appProjectList.post('/projectlist', function(req, res) {
-    console.log(req.body);
-    db.projectlist.insert(req.body, function(err, doc) {
-      res.json(doc);
-    });
-  });
 
+  /*exports.setProjectList = function(app) {
+    app.post('/projectlist', function(req, res) {
+      console.log(req.body);
+      db.projectlist.insert(req.body, function(err, doc) {
+        res.json(doc);
+      });
+    });
+  };*/
+
+
+/*
 
   appProjectList.delete('/projectlist/:id', function(req, res) {
     var id = req.params.id;
