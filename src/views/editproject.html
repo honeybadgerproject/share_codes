@@ -1,0 +1,42 @@
+<div class="page page-email" ng-controller="projectListCtrl">
+
+	<!--<ol class="breadcrumb breadcrumb-small">
+		<li>Home</li>
+		<li class="active"><a href="#/material">Choose a Project to Edit</a></li>
+	</ol>-->
+
+
+	<div class="page-wrap">
+    <div class="row" ng-controller="refreshProjectListCtrl">
+      <div class="col-md-3">
+        <nav class="email-nav clearfix">
+          <div class="xsmall nav-text-lead text-uppercase text-muted mb10">Action</div>
+          <ul class="list-unstyled navigation mb15">
+            <li class="active"><a href="javascript:;"><span class="ion ion-android-close"></span>Return to Dashboard</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- #start mini boxes -->
+      <div class="col-md-6 col-sm-6" ng-init="refreshProjectList()">
+        <div ng-repeat="project in projectlist" class="panel panel-default mb20 mini-box panel-hovered">
+          <div class="panel-body">
+            <div class="clearfix">
+              <div class="info left">
+                <h4 class="mt0 text-primary text-bold">$30,200</h4>
+                <h5 class="text-light mb0">All Earnings</h5>
+              </div>
+              <div class="right ion ion-ios-pulse icon"></div>
+            </div>
+          </div>
+          <div class="panel-footer clearfix panel-footer-sm panel-footer-primary">
+            <p class="mt0 mb0 left">Edit</p>
+            <span sparkline class="right" type="bar" bar-color="#fff" width="1.15em" height="1.15em">10,8,9,3,5,8,5</span>
+          </div>
+        </div>
+      </div>   <!-- #col -->
+      <!-- #end mini boxes -->
+    </div> <!-- row -->
+
+  </div> <!-- #end page-wrap -->
+</div>
